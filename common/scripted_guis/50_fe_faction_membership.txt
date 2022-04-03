@@ -1,0 +1,11 @@
+fe_faction_membership_icon = {
+	scope = character
+
+	is_shown = {
+		liege = {
+			any_targeting_faction = {
+				any_faction_member = { this = root }
+			}
+		}
+	}
+}
