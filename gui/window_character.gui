@@ -40,9 +40,14 @@ window = {
 		widget = {
 			name = "main_characters"
 			datacontext = "[GetIllustration( 'character_view_bg' )]"
+			datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
+			state = {
+				name = _mouse_hierarchy_enter
+				on_start = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End)]"
+			}
+
 			layoutpolicy_horizontal = expanding
 			size = { 0 305 }
-
 
 			widget = {
 				size = { 100% 100% }
@@ -253,6 +258,7 @@ window = {
 
 				using = Animation_Character_Window_Refresh_Short
 
+				datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
 				# icon_button_small_round = {
 				# 	name = "interact_button"
 				# 	visible = "[Character.IsAlive]"
@@ -679,11 +685,17 @@ window = {
 				container = {
 					name = "fe_faction_membership_icon"
 					datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
+					datacontext = "[CharacterWindow.GetCharacter]"
+
 					visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End)]"
 
 					icon = {
 						texture = "gfx/interface/icons/message_feed/faction.dds"
 						size = { 35 35 }
+					}
+
+					tooltipwidget = {
+						using = fe_faction_member_tooltip
 					}
 				}
 

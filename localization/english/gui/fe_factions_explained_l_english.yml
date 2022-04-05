@@ -1,0 +1,8 @@
+﻿l_english:
+ FE_FACTION_MEMBER:1 "Faction Member"
+ FE_FACTION_MEMBER_TT:1 "[Character.GetTitledFirstNameNoTooltip] is in the [Character.MakeScope.Var('fe_faction').Faction.GetName] against [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetNameOrMe]"
+ FE_TOTAL_NEGATIVE:1 "Total: #P [Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]#! (will leave the faction soon)"
+ FE_TOTAL_POSITIVE:1 "Total: #N +[Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]#!"
+ FE_BASE_RELUCTANCE:1 "  Base reluctance: #P [Character.MakeScope.Var('fe_base_reluctance').GetValue|0]#!"
+ FE_OPINION_NEGATIVE:1 "  [Character.GetTitledFirstNameNoTooltip] likes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #P [Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
+ FE_OPINION_POSITIVE:1 "  [Character.GetTitledFirstNameNoTooltip] dislikes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #N +[Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"

@@ -1,0 +1,78 @@
+template fe_faction_member_tooltip {
+	container = {
+		alwaystransparent = no
+
+		object_tooltip_pop_out = {
+			datacontext = "[CharacterWindow.GetCharacter]"
+
+			blockoverride "title_text" {
+				text = "FE_FACTION_MEMBER"
+			}
+
+			blockoverride "concept_link" {
+				text = [faction|E]
+			}
+
+			blockoverride "description_text" {
+				text = "FE_FACTION_MEMBER_TT"
+			}
+
+			blockoverride "extra_data_after_description" {
+				textbox = {
+					name = "fe_total_desire_positive"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
+					text = "FE_TOTAL_POSITIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+
+				textbox = {
+					name = "fe_total_desire_negative"
+					visible = "[LessThanOrEqualTo_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
+					text = "FE_TOTAL_NEGATIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+
+				textbox = {
+					name = "fe_base_reluctance"
+					visible = "[LessThan_CFixedPoint( Character.MakeScope.Var('fe_base_reluctance').GetValue, '(CFixedPoint)0')]"
+					text = "FE_BASE_RELUCTANCE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+
+				textbox = {
+					name = "fe_opinion_positive"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
+					text = "FE_OPINION_POSITIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+
+				textbox = {
+					name = "fe_opinion_negative"
+					visible = "[LessThanOrEqualTo_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
+					text = "FE_OPINION_NEGATIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+			}
+		}
+	}
+}

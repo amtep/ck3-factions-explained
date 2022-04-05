@@ -1,0 +1,146 @@
+﻿
+# root is the faction member
+fe_calculate_faction_desire = {
+	set_variable = {
+		name = fe_faction_total_desire
+		value = 0
+	}
+
+	set_variable = {
+		name = fe_base_reluctance
+		value = 0
+	}
+
+	set_variable = {
+		name = fe_opinion_of_target
+		value = 0
+	}
+
+	save_temporary_opinion_value_as = {
+		name = target_opinion
+		target = joined_faction.faction_target
+	}
+
+	if = {
+		limit = {
+			joined_faction = {
+				faction_is_type = independence_faction
+			}
+		}
+
+		change_variable = {
+			name = fe_base_reluctance
+			add = -150
+		}
+
+		fe_calculate_opinion_modifier = {
+			OPINION_MULTIPLIER = -0.4
+			MAX_OPINION = 100
+		}
+	}
+
+	if = {
+		limit = {
+			joined_faction = {
+				faction_is_type = liberty_faction
+			}
+		}
+
+		change_variable = {
+			name = fe_base_reluctance
+			add = 0
+		}
+
+		fe_calculate_opinion_modifier = {
+			OPINION_MULTIPLIER = -1
+			MAX_OPINION = 0
+		}
+	}
+
+	if = {
+		limit = {
+			joined_faction = {
+				faction_is_type = claimant_faction
+			}
+		}
+
+		change_variable = {
+			name = fe_base_reluctance
+			add = -25
+		}
+
+		fe_calculate_opinion_modifier = {
+			OPINION_MULTIPLIER = -1
+			MAX_OPINION = 100
+		}
+	}
+
+	if = {
+		limit = {
+			joined_faction = {
+				faction_is_type = populist_faction
+			}
+		}
+
+		change_variable = {
+			name = fe_base_reluctance
+			add = -25
+		}
+
+		fe_calculate_opinion_modifier = {
+			OPINION_MULTIPLIER = -1
+			MAX_OPINION = 100
+		}
+	}
+
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_base_reluctance
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_opinion_of_target
+	}
+}
+
+# root is the faction member
+# modifies fe_opinion_of_target
+fe_calculate_opinion_modifier = {
+	save_temporary_opinion_value_as = {
+		name = fe_temp_opinion
+		target = joined_faction.faction_target
+	}
+	# need to make it a real variable
+	set_variable = {
+		name = fe_temp1
+		value = scope:fe_temp_opinion
+	}
+
+	if = {
+		limit = { var:fe_temp1 >= 80 }
+		change_variable = {
+			name = fe_opinion_of_target
+			add = -1000
+		}
+	}
+
+	if = {
+		limit = { var:fe_temp1 > $MAX_OPINION$ }
+		set_variable = {
+			name = fe_temp1
+			value = $MAX_OPINION$
+		}
+	}
+
+	change_variable = {
+		name = fe_temp1
+		multiply = $OPINION_MULTIPLIER$
+	}
+
+	change_variable = {
+		name = fe_opinion_of_target
+		add = var:fe_temp1
+	}
+
+	remove_variable = fe_temp1
+}
