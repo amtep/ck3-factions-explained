@@ -18,189 +18,114 @@ template fe_faction_member_tooltip {
 			}
 
 			blockoverride "extra_data_after_description" {
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_total_desire_positive"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
 					text = "FE_TOTAL_POSITIVE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_total_desire_negative"
 					visible = "[LessThanOrEqualTo_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
 					text = "FE_TOTAL_NEGATIVE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_base_reluctance"
 					visible = "[LessThan_CFixedPoint( Character.MakeScope.Var('fe_base_reluctance').GetValue, '(CFixedPoint)0')]"
 					text = "FE_BASE_RELUCTANCE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_opinion_positive"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
 					text = "FE_OPINION_POSITIVE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_opinion_negative"
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
 					text = "FE_OPINION_NEGATIVE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_different_faith"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_different_faith').GetValue, '(CFixedPoint)0')]"
 					text = "FE_DIFFERENT_FAITH"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_legalism_virtues"
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_legalism_virtues').GetValue, '(CFixedPoint)0')]"
 					text = "FE_LEGALISM_VIRTUES"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_legalism_sins"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_legalism_sins').GetValue, '(CFixedPoint)0')]"
 					text = "FE_LEGALISM_SINS"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_intimidated"
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_intimidated').GetValue, '(CFixedPoint)0')]"
 					text = "FE_INTIMIDATED"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_target_debt"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_debt').GetValue, '(CFixedPoint)0')]"
 					text = "FE_TARGET_DEBT"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_game_difficulty_score"
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_difficulty_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_GAME_DIFFICULTY"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_game_stability_score_unstable"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_game_stability_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_GAME_STABILITY_POSITIVE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_game_stability_score_stable"
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_stability_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_GAME_STABILITY_NEGATIVE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_same_faith_elector_score"
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_same_faith_elector_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_SAME_FAITH_ELECTOR"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_not_de_jure_score"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_not_de_jure_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_NOT_DE_JURE"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_kingdom_score"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_kingdom_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_KINGDOM"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
-				textbox = {
+				fe_tooltip_line = {
 					name = "fe_grandeur_score"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_grandeur_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_GRANDEUR"
-
-					using = DefaultTooltipText
-					layoutpolicy_horizontal = expanding
-					fonttintcolor = "[TooltipInfo.GetTintColor]"
-					alwaystransparent = no
 				}
 			}
 		}
+	}
+}
+
+types FeTypes
+{
+	type fe_tooltip_line = textbox {
+		using = DefaultTooltipText
+		layoutpolicy_horizontal = expanding
+		fonttintcolor = "[TooltipInfo.GetTintColor]"
+		alwaystransparent = no
 	}
 }
