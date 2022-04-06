@@ -104,6 +104,28 @@ template fe_faction_member_tooltip {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
+
+				textbox = {
+					name = "fe_intimidated"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_intimidated').GetValue, '(CFixedPoint)0')]"
+					text = "FE_INTIMIDATED"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+
+				textbox = {
+					name = "fe_target_debt"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_debt').GetValue, '(CFixedPoint)0')]"
+					text = "FE_TARGET_DEBT"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
 			}
 		}
 	}

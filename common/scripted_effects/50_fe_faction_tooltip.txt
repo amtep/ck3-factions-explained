@@ -7,6 +7,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_different_faith value = 0 }
 	set_variable = { name = fe_legalism_virtues value = 0 }
 	set_variable = { name = fe_legalism_sins value = 0 }
+	set_variable = { name = fe_intimidated value = 0 }
+	set_variable = { name = fe_target_debt value = 0 }
 
 	if = {
 		limit = {
@@ -78,6 +80,11 @@ fe_calculate_faction_desire = {
 			HOSTILE_BASE_VALUE = 50
 			EVIL_BASE_VALUE = 100
 			TARGET_FAITH = root.joined_faction.faction_target.faith
+		
+}
+		fe_calculate_debt = {
+			TARGET = root.joined_faction.faction_target
+			SCORE_PER_DEBT_LEVEL = 10
 		}
 	}
 
@@ -104,11 +111,21 @@ fe_calculate_faction_desire = {
 			EVIL_BASE_VALUE = 125
 			TARGET_FAITH = root.joined_faction.faction_target.faith
 		}
+
+		fe_calculate_debt = {
+			TARGET = root.joined_faction.faction_target
+			SCORE_PER_DEBT_LEVEL = 20
+		}
 	}
 
 	fe_legalism_virtue_and_sin = {
 		SCORE_PER_TRAIT = 25
 		TARGET = root.joined_faction.faction_target
+	}
+
+	fe_intimidated = {
+		POWER = root.joined_faction.faction_power
+		THRESHOLD = root.joined_faction.faction_power_threshold
 	}
 
 	change_variable = {
@@ -130,6 +147,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_legalism_sins
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_intimidated
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_target_debt
 	}
 }
 
@@ -370,5 +395,80 @@ fe_legalism_virtue_and_sin = {
 				multiply = 0.5
 			}
 		}
+	}
+}
+
+fe_intimidated = {
+	if = {
+		limit = {
+			has_dread_level_towards = {
+				target = root.joined_faction.faction_target
+				level = 1
+			}
+			$POWER$ < $THRESHOLD$
+		}
+		change_variable = {
+			name = fe_intimidated
+			add = -50
+		}
+	}
+
+	if = {
+		limit = {
+			has_dread_level_towards = {
+				target = root.joined_faction.faction_target
+				level = 2
+			}
+		}
+		if = {
+			limit = {
+				$POWER$ < $THRESHOLD$
+			}
+			change_variable = {
+				name = fe_intimidated
+				add = -1000
+			}
+		}
+		else = {
+			change_variable = {
+				name = fe_intimidated
+				add = -100
+			}
+
+		}
+	}
+}
+
+# root is the faction member
+# inputs: TARGET SCORE_PER_DEBT_LEVEL
+fe_calculate_debt = {
+	if = {
+		limit = {
+			$TARGET$ = { gold <= 0 }
+		}
+		set_variable = {
+			name = fe_temp3
+			value = $TARGET$.debt_level
+		}
+		change_variable = {
+			name = fe_temp3
+			add = 1
+		}
+		if = {
+			limit = { $TARGET$ = { debt_level > 9 } }
+			set_variable = {
+				name = fe_temp3
+				value = 10
+			}
+		}
+		change_variable = {
+			name = fe_temp3
+			multiply = $SCORE_PER_DEBT_LEVEL$
+		}
+		change_variable = {
+			name = fe_target_debt
+			add = var:fe_temp3
+		}
+		remove_variable = fe_temp3
 	}
 }
