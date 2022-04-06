@@ -16,6 +16,11 @@ fe_calculate_faction_desire = {
 		value = 0
 	}
 
+	set_variable = {
+		name = fe_different_faith
+		value = 0
+	}
+
 	save_temporary_opinion_value_as = {
 		name = target_opinion
 		target = joined_faction.faction_target
@@ -78,6 +83,25 @@ fe_calculate_faction_desire = {
 	if = {
 		limit = {
 			joined_faction = {
+				OR = {
+					faction_is_type = independence_faction
+					faction_is_type = liberty_faction
+					faction_is_type = claimant_faction
+				}
+			}
+		}
+
+		fe_calculate_faith_modifier = {
+			ASTRAY_BASE_VALUE = 25
+			HOSTILE_BASE_VALUE = 50
+			EVIL_BASE_VALUE = 100
+			TARGET_FAITH = root.joined_faction.faction_target.faith
+		}
+	}
+
+	if = {
+		limit = {
+			joined_faction = {
 				faction_is_type = populist_faction
 			}
 		}
@@ -91,6 +115,13 @@ fe_calculate_faction_desire = {
 			OPINION_MULTIPLIER = -1
 			MAX_OPINION = 100
 		}
+
+		fe_calculate_faith_modifier = {
+			ASTRAY_BASE_VALUE = 35
+			HOSTILE_BASE_VALUE = 75
+			EVIL_BASE_VALUE = 125
+			TARGET_FAITH = root.joined_faction.faction_target.faith
+		}
 	}
 
 	change_variable = {
@@ -101,10 +132,15 @@ fe_calculate_faction_desire = {
 		name = fe_faction_total_desire
 		add = var:fe_opinion_of_target
 	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_different_faith
+	}
 }
 
 # root is the faction member
 # modifies fe_opinion_of_target
+# handles the >=80 opinion cutoff too
 fe_calculate_opinion_modifier = {
 	save_temporary_opinion_value_as = {
 		name = fe_temp_opinion
@@ -143,4 +179,120 @@ fe_calculate_opinion_modifier = {
 	}
 
 	remove_variable = fe_temp1
+}
+
+# root is the faction member
+# sets fe_different_faith
+# emulates pluralism_fundamentalism_modifier
+fe_calculate_faith_modifier = {
+	if = {
+		limit = {
+			root.culture = {
+				has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+			}
+		}
+		# no effect, fe_different_faith stays at 0
+	}
+	else_if = {
+		limit = {
+			root.faith = {
+				faith_hostility_level = {
+					target = $TARGET_FAITH$
+					value = faith_astray_level
+				}
+			}
+		}
+
+		set_variable = {
+			name = fe_different_faith
+			value = $ASTRAY_BASE_VALUE$
+		}
+	}
+	else_if = {
+		limit = {
+			root.faith = {
+				faith_hostility_level = {
+					target = $TARGET_FAITH$
+					value = faith_hostile_level
+				}
+			}
+		}
+
+		set_variable = {
+			name = fe_different_faith
+			value = $HOSTILE_BASE_VALUE$
+		}
+	}
+	else_if = {
+		limit = {
+			root.faith = {
+				faith_hostility_level = {
+					target = $TARGET_FAITH$
+					value = faith_evil_level
+				}
+			}
+		}
+
+		set_variable = {
+			name = fe_different_faith
+			value = $EVIL_BASE_VALUE$
+		}
+	}
+
+	# modify for target's faith's righteousness
+	if = {
+		limit = {
+			$TARGET_FAITH$ = {
+				has_doctrine = doctrine_pluralism_righteous
+			}
+		}
+		change_variable = {
+			name = fe_different_faith
+			multiply = hostility_multiplier_righteous
+		}
+	}
+	else_if = {
+		limit = {
+			$TARGET_FAITH$ = {
+				has_doctrine = doctrine_pluralism_pluralistic
+			}
+		}
+		change_variable = {
+			name = fe_different_faith
+			multiply = hostility_multiplier_pluralism
+		}
+	}
+	else_if = {
+		limit = {
+			$TARGET_FAITH$ = {
+				has_doctrine = doctrine_pluralism_fundamentalist
+			}
+		}
+		change_variable = {
+			name = fe_different_faith
+			multiply = hostility_multiplier_fundamentalist
+		}
+	}
+
+	if = {
+		limit = {
+			$TARGET_FAITH$ = {
+				has_doctrine_parameter = reduced_vassal_religion_discontent
+			}
+			var:fe_different_faith > 0
+		}
+		set_variable = {
+			name = fe_temp2
+			value = $ASTRAY_BASE_VALUE$
+		}
+		change_variable = {
+			name = fe_temp2
+			multiply = hostility_multiplier_reduction_adaptive
+		}
+		change_variable = {
+			name = fe_different_faith
+			add = var:fe_temp2
+		}
+		remove_variable = fe_temp2
+	}
 }

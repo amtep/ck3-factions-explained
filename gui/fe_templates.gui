@@ -64,8 +64,19 @@ template fe_faction_member_tooltip {
 
 				textbox = {
 					name = "fe_opinion_negative"
-					visible = "[LessThanOrEqualTo_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
 					text = "FE_OPINION_NEGATIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+
+				textbox = {
+					name = "fe_different_faith"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_different_faith').GetValue, '(CFixedPoint)0')]"
+					text = "FE_DIFFERENT_FAITH"
 
 					using = DefaultTooltipText
 					layoutpolicy_horizontal = expanding

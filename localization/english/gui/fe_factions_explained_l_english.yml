@@ -4,5 +4,6 @@
  FE_TOTAL_NEGATIVE:1 "Total: #P [Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]#! (will leave the faction soon)"
  FE_TOTAL_POSITIVE:1 "Total: #N +[Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]#!"
  FE_BASE_RELUCTANCE:1 "  Base reluctance: #P [Character.MakeScope.Var('fe_base_reluctance').GetValue|0]#!"
- FE_OPINION_NEGATIVE:1 "  [Character.GetTitledFirstNameNoTooltip] likes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #P [Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
- FE_OPINION_POSITIVE:1 "  [Character.GetTitledFirstNameNoTooltip] dislikes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #N +[Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
+ FE_OPINION_NEGATIVE:1 "  Likes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #P [Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
+ FE_OPINION_POSITIVE:1 "  Dislikes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #N +[Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
+ FE_DIFFERENT_FAITH:1 "  Different faith than [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #N +[Character.MakeScope.Var('fe_different_faith').GetValue|0]#!"
