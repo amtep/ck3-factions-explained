@@ -179,6 +179,27 @@ template fe_faction_member_tooltip {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
+
+				textbox = {
+					name = "fe_kingdom_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_kingdom_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_KINGDOM"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+				textbox = {
+					name = "fe_grandeur_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_grandeur_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_GRANDEUR"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
 			}
 		}
 	}

@@ -13,6 +13,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_game_stability_score value = 0 }
 	set_variable = { name = fe_same_faith_elector_score value = 0 }
 	set_variable = { name = fe_not_de_jure_score value = 0 }
+	set_variable = { name = fe_kingdom_score value = 0 }
+	set_variable = { name = fe_grandeur_score value = 0 }
 
 	if = {
 		limit = {
@@ -196,6 +198,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_not_de_jure_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_kingdom_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_grandeur_score
 	}
 }
 
@@ -612,6 +622,32 @@ fe_independence_faction_modifiers = {
 			add = {
 				value = sub_realm_size
 				multiply = 2
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			highest_held_title_tier = tier_kingdom
+		}
+		change_variable = {
+			name = fe_kingdom_score
+			add = 50
+		}
+
+		if = {
+			limit = {
+				has_royal_court = yes
+				$TARGET$ = { has_royal_court = yes }
+				court_grandeur_current_level > $TARGET$.court_grandeur_current_level
+			}
+			change_variable = {
+				name = fe_grandeur_score
+				add = {
+					add = court_grandeur_current_level
+					subtract = $TARGET$.court_grandeur_current_level
+					multiply = 15
+				}
 			}
 		}
 	}
