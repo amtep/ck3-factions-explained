@@ -15,6 +15,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_not_de_jure_score value = 0 }
 	set_variable = { name = fe_rank_score value = 0 }
 	set_variable = { name = fe_grandeur_score value = 0 }
+	set_variable = { name = fe_toe_the_line_score value = 0 }
 
 	if = {
 		limit = {
@@ -206,6 +207,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_grandeur_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_toe_the_line_score
 	}
 }
 
@@ -655,6 +660,18 @@ fe_independence_faction_modifiers = {
 		change_variable = {
 			name = fe_rank_score
 			add = -25
+		}
+	}
+
+	if = {
+		limit = {
+			$TARGET$ = {
+				has_perk = toe_the_line_perk
+			}
+		}
+		change_variable = {
+			name = fe_toe_the_line_score
+			add = -50
 		}
 	}
 }

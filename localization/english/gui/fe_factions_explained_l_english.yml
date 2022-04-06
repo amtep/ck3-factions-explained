@@ -19,3 +19,4 @@
  FE_RANK_POSITIVE:1 "  Is a [Character.GetTitleAsNameNoTooltip]: #N +[Character.MakeScope.Var('fe_rank_score').GetValue|0]#!"
  FE_RANK_NEGATIVE:1 "  Is only a [Character.GetTitleAsNameNoTooltip]: #P [Character.MakeScope.Var('fe_rank_score').GetValue|0]#!"
  FE_GRANDEUR:1 "  Court has higher [grandeur|E] than [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy] court: #N +[Character.MakeScope.Var('fe_grandeur_score').GetValue|0]#!"
+ FE_TOE_THE_LINE:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy|U] Toe the Line perk: #P [Character.MakeScope.Var('fe_toe_the_line_score').GetValue|0]#!"
