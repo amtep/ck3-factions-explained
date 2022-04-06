@@ -157,6 +157,17 @@ template fe_faction_member_tooltip {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
+
+				textbox = {
+					name = "fe_same_faith_elector_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_same_faith_elector_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_SAME_FAITH_ELECTOR"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
 			}
 		}
 	}

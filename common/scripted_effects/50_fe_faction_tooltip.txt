@@ -11,6 +11,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_target_debt value = 0 }
 	set_variable = { name = fe_game_difficulty_score value = 0 }
 	set_variable = { name = fe_game_stability_score value = 0 }
+	set_variable = { name = fe_same_faith_elector_score value = 0 }
 
 	if = {
 		limit = {
@@ -27,6 +28,10 @@ fe_calculate_faction_desire = {
 		fe_calculate_opinion_modifier = {
 			OPINION_MULTIPLIER = -0.4
 			MAX_OPINION = 100
+		}
+
+		fe_independence_faction_modifiers = {
+			TARGET = root.joined_faction.faction_target
 		}
 	}
 
@@ -182,6 +187,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_game_stability_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_same_faith_elector_score
 	}
 }
 
@@ -547,6 +556,24 @@ fe_calculate_game_settings = {
 		change_variable = {
 			name = fe_game_stability_score 
 			add = $EXTREME_STABILITY$
+		}
+	}
+}
+
+fe_independence_faction_modifiers = {
+	if = {
+		limit = {
+			$TARGET$.primary_title = {
+				has_order_of_succession = election
+				any_elector = {
+					this = root
+				}
+			}
+			$TARGET$.faith = root.faith
+		}
+		change_variable = {
+			name = fe_same_faith_elector_score
+			add = -150
 		}
 	}
 }
