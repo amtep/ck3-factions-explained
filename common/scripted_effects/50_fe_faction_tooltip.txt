@@ -16,6 +16,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_rank_score value = 0 }
 	set_variable = { name = fe_grandeur_score value = 0 }
 	set_variable = { name = fe_toe_the_line_score value = 0 }
+	set_variable = { name = fe_stem_duchies_score value = 0 }
+	set_variable = { name = fe_cultural_acceptance_score value = 0 }
 
 	if = {
 		limit = {
@@ -211,6 +213,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_toe_the_line_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_stem_duchies_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_cultural_acceptance_score
 	}
 }
 
@@ -674,4 +684,127 @@ fe_independence_faction_modifiers = {
 			add = -50
 		}
 	}
+
+	if = {
+		limit = {
+			$TARGET$.culture = {
+				has_innovation = innovation_stem_duchies
+			}
+			culture = {
+				has_same_culture_heritage = $TARGET$.culture
+			}
+		}
+		change_variable = {
+			name = fe_stem_duchies_score
+			add = -25
+		}
+	}
+
+	set_variable = { name = fe_temp4 value = 0 }
+	if = {
+		limit = {
+			culture = {
+				NOR = {
+					this = $TARGET$.culture
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value >= 90
+					}
+					has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+				}
+			}
+		}
+
+		change_variable = {
+			name = fe_temp4
+			add = 20
+		}
+
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 20
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp4
+				add = 20
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 35
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp4
+				add = 15
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 50
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp4
+				add = 10
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 70
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp4
+				add = 5
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 80
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp4
+				add = 5
+			}
+		}
+		if = {
+			limit = {
+				$TARGET$ = {
+					knows_language_of_culture = prev.culture
+				}
+			}
+			change_variable = {
+				name = fe_temp4
+				multiply = 0.5
+			}
+		}
+	}
+	change_variable = {
+		name = fe_cultural_acceptance_score
+		add = var:fe_temp4
+	}
+	remove_variable = fe_temp4
 }

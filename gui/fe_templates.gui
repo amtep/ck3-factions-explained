@@ -126,6 +126,18 @@ template fe_faction_member_tooltip {
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_toe_the_line_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_TOE_THE_LINE"
 				}
+
+				fe_tooltip_line = {
+					name = "fe_stem_duchies_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_stem_duchies_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_STEM_DUCHIES"
+				}
+
+				fe_tooltip_line = {
+					name = "fe_cultural_acceptance_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_cultural_acceptance_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CULTURAL_ACCEPTANCE"
+				}
 			}
 		}
 	}
