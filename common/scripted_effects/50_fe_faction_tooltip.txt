@@ -12,6 +12,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_game_difficulty_score value = 0 }
 	set_variable = { name = fe_game_stability_score value = 0 }
 	set_variable = { name = fe_same_faith_elector_score value = 0 }
+	set_variable = { name = fe_not_de_jure_score value = 0 }
 
 	if = {
 		limit = {
@@ -191,6 +192,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_same_faith_elector_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_not_de_jure_score
 	}
 }
 
@@ -574,6 +579,40 @@ fe_independence_faction_modifiers = {
 		change_variable = {
 			name = fe_same_faith_elector_score
 			add = -150
+		}
+	}
+
+	if = {
+		limit = {
+			OR = {
+				NOT = {
+					is_rightful_liege_of_trigger = {
+						VASSAL = root
+						LIEGE = $TARGET$
+					}
+				}
+				any_sub_realm_county = {
+					percent <= 0.5
+					save_temporary_scope_as = current_county
+					$TARGET$.primary_title = {
+						any_in_de_jure_hierarchy = {
+							this = scope:current_county
+						}
+					}
+				}
+			}
+		}
+
+		change_variable = {
+			name = fe_not_de_jure_score
+			add = 125
+		}
+		change_variable = {
+			name = fe_not_de_jure_score
+			add = {
+				value = sub_realm_size
+				multiply = 2
+			}
 		}
 	}
 }

@@ -168,6 +168,17 @@ template fe_faction_member_tooltip {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
+
+				textbox = {
+					name = "fe_not_de_jure_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_not_de_jure_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_NOT_DE_JURE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
 			}
 		}
 	}
