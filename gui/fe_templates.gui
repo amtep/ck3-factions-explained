@@ -144,6 +144,30 @@ template fe_faction_member_tooltip {
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_cultural_acceptance_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CULTURAL_ACCEPTANCE"
 				}
+
+				fe_tooltip_line = {
+					name = "fe_assertive_rulers_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_assertive_rulers_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_ASSERTIVE_RULERS"
+				}
+
+				fe_tooltip_line = {
+					name = "fe_supported_liege_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_supported_liege_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_SUPPORTED_LIEGE"
+				}
+
+				fe_tooltip_line = {
+					name = "fe_claimant_incapable_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_incapable_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_INCAPABLE"
+				}
+
+				fe_tooltip_line = {
+					name = "fe_claimant_theocratic_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_assertive_rulers_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_THEOCRATIC"
+				}
 			}
 		}
 	}

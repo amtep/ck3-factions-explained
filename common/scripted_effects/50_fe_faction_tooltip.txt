@@ -19,6 +19,10 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_stem_duchies_score value = 0 }
 	set_variable = { name = fe_cultural_acceptance_score value = 0 }
 	set_variable = { name = fe_crown_authority_score value = 0 }
+	set_variable = { name = fe_assertive_rulers_score value = 0 }
+	set_variable = { name = fe_supported_liege_score value = 0 }
+	set_variable = { name = fe_claimant_incapable_score value = 0 }
+	set_variable = { name = fe_claimant_theocratic_score value = 0 }
 
 	if = {
 		limit = {
@@ -79,6 +83,11 @@ fe_calculate_faction_desire = {
 		fe_calculate_opinion_modifier = {
 			OPINION_MULTIPLIER = -1
 			MAX_OPINION = 100
+		}
+
+		fe_claimant_faction_blockers = {
+			TARGET = root.joined_faction.faction_target
+			CLAIMANT = root.joined_faction.special_character
 		}
 	}
 
@@ -230,6 +239,22 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_crown_authority_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_assertive_rulers_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_supported_liege_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_incapable_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_theocratic_score
 	}
 }
 
@@ -838,6 +863,56 @@ fe_liberty_faction_modifiers = {
 		change_variable = {
 			name = fe_crown_authority_score
 			add = 40
+		}
+	}
+
+	if = {
+		limit = {
+			$TARGET$ = {
+				exists = dynasty
+				dynasty = {
+					has_dynasty_perk = glory_legacy_4
+				}
+			}
+		}
+		change_variable = {
+			name = fe_assertive_rulers_score
+			add = -20
+		}
+	}
+}
+
+fe_claimant_faction_blockers = {
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				modifier = claimant_faction_member_opinion
+				target = $TARGET$
+			}
+		}
+		change_variable = {
+			name = fe_supported_liege_score
+			add = -5000
+		}
+	}
+
+	if = {
+		limit = {
+			$CLAIMANT$ = { has_trait = incapable }
+		}
+		change_variable = {
+			name = fe_claimant_incapable_score
+			add = -1000
+		}
+	}
+
+	if = {
+		limit = {
+			$CLAIMANT$ = { has_government = theocracy_government }
+		}
+		change_variable = {
+			name = fe_claimant_theocratic_score
+			add = -1000
 		}
 	}
 }
