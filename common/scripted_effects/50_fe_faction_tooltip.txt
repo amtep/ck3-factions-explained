@@ -1,30 +1,12 @@
 ﻿
 # root is the faction member
 fe_calculate_faction_desire = {
-	set_variable = {
-		name = fe_faction_total_desire
-		value = 0
-	}
-
-	set_variable = {
-		name = fe_base_reluctance
-		value = 0
-	}
-
-	set_variable = {
-		name = fe_opinion_of_target
-		value = 0
-	}
-
-	set_variable = {
-		name = fe_different_faith
-		value = 0
-	}
-
-	save_temporary_opinion_value_as = {
-		name = target_opinion
-		target = joined_faction.faction_target
-	}
+	set_variable = { name = fe_faction_total_desire value = 0 }
+	set_variable = { name = fe_base_reluctance value = 0 }
+	set_variable = { name = fe_opinion_of_target value = 0 }
+	set_variable = { name = fe_different_faith value = 0 }
+	set_variable = { name = fe_legalism_virtues value = 0 }
+	set_variable = { name = fe_legalism_sins value = 0 }
 
 	if = {
 		limit = {
@@ -124,6 +106,11 @@ fe_calculate_faction_desire = {
 		}
 	}
 
+	fe_legalism_virtue_and_sin = {
+		SCORE_PER_TRAIT = 25
+		TARGET = root.joined_faction.faction_target
+	}
+
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_base_reluctance
@@ -135,6 +122,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_different_faith
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_legalism_virtues
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_legalism_sins
 	}
 }
 
@@ -294,5 +289,86 @@ fe_calculate_faith_modifier = {
 			add = var:fe_temp2
 		}
 		remove_variable = fe_temp2
+	}
+}
+
+# root is the faction member
+# modifies fe_legalism_virtues and fe_legalism_sins
+# inputs: SCORE_PER_TRAIT and TARGET
+fe_legalism_virtue_and_sin = {
+	if = {
+		limit = {
+			$TARGET$.faith = {
+				has_doctrine_parameter = legalism_reduced_faction_virtues
+			}
+		}
+		change_variable = {
+			name = fe_legalism_virtues
+                        subtract = $SCORE_PER_TRAIT$
+		}
+		change_variable = {
+			name = fe_legalism_virtues
+                        multiply = $TARGET$.num_virtuous_traits
+		}
+		if = {
+			limit = {
+				$TARGET$ = {
+					has_trait = zealous
+				}
+			}
+			change_variable = {
+				name = fe_legalism_virtues
+				multiply = 2
+			}
+		}
+		if = {
+			limit = {
+				$TARGET$ = {
+					has_trait = cynical
+				}
+			}
+			change_variable = {
+				name = fe_legalism_virtues
+				multiply = 0.5
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			$TARGET$.faith = {
+				has_doctrine_parameter = legalism_reduced_faction_virtues
+			}
+		}
+		change_variable = {
+			name = fe_legalism_sins
+                        add = $SCORE_PER_TRAIT$
+		}
+		change_variable = {
+			name = fe_legalism_sins
+                        multiply = $TARGET$.num_sinful_traits
+		}
+		if = {
+			limit = {
+				$TARGET$ = {
+					has_trait = zealous
+				}
+			}
+			change_variable = {
+				name = fe_legalism_sins
+				multiply = 2
+			}
+		}
+		if = {
+			limit = {
+				$TARGET$ = {
+					has_trait = cynical
+				}
+			}
+			change_variable = {
+				name = fe_legalism_sins
+				multiply = 0.5
+			}
+		}
 	}
 }

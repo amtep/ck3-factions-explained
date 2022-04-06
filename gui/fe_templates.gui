@@ -83,6 +83,27 @@ template fe_faction_member_tooltip {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
+
+				textbox = {
+					name = "fe_legalism_virtues"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_legalism_virtues').GetValue, '(CFixedPoint)0')]"
+					text = "FE_LEGALISM_VIRTUES"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+				textbox = {
+					name = "fe_legalism_sins"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_legalism_sins').GetValue, '(CFixedPoint)0')]"
+					text = "FE_LEGALISM_SINS"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
 			}
 		}
 	}
