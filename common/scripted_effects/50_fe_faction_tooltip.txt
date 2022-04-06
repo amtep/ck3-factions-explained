@@ -38,7 +38,7 @@ fe_calculate_faction_desire = {
 
 		fe_calculate_opinion_modifier = {
 			OPINION_MULTIPLIER = -0.4
-			MAX_OPINION = 100
+			MAX_FROM_OPINION = 100
 		}
 
 		fe_independence_faction_modifiers = {
@@ -60,7 +60,7 @@ fe_calculate_faction_desire = {
 
 		fe_calculate_opinion_modifier = {
 			OPINION_MULTIPLIER = -1
-			MAX_OPINION = 0
+			MAX_FROM_OPINION = 0
 		}
 
 		fe_liberty_faction_modifiers = {
@@ -82,7 +82,7 @@ fe_calculate_faction_desire = {
 
 		fe_calculate_opinion_modifier = {
 			OPINION_MULTIPLIER = -1
-			MAX_OPINION = 100
+			MAX_FROM_OPINION = 100
 		}
 
 		fe_claimant_faction_blockers = {
@@ -137,7 +137,7 @@ fe_calculate_faction_desire = {
 
 		fe_calculate_opinion_modifier = {
 			OPINION_MULTIPLIER = -1
-			MAX_OPINION = 100
+			MAX_FROM_OPINION = 100
 		}
 
 		fe_calculate_faith_modifier = {
@@ -280,17 +280,17 @@ fe_calculate_opinion_modifier = {
 		}
 	}
 
-	if = {
-		limit = { var:fe_temp1 > $MAX_OPINION$ }
-		set_variable = {
-			name = fe_temp1
-			value = $MAX_OPINION$
-		}
-	}
-
 	change_variable = {
 		name = fe_temp1
 		multiply = $OPINION_MULTIPLIER$
+	}
+
+	if = {
+		limit = { var:fe_temp1 > $MAX_FROM_OPINION$ }
+		set_variable = {
+			name = fe_temp1
+			value = $MAX_FROM_OPINION$
+		}
 	}
 
 	change_variable = {
