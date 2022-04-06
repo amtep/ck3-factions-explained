@@ -37,6 +37,12 @@ template fe_faction_member_tooltip {
 				}
 
 				fe_tooltip_line = {
+					name = "fe_crown_authority_score"
+					visible = "[GreaterThan_CFixedPoint( Character.MakeScope.Var('fe_crown_authority_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CROWN_AUTHORITY"
+				}
+
+				fe_tooltip_line = {
 					name = "fe_opinion_positive"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
 					text = "FE_OPINION_POSITIVE"

@@ -22,4 +22,4 @@
  FE_TOE_THE_LINE:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy|U] Toe the Line perk: #P [Character.MakeScope.Var('fe_toe_the_line_score').GetValue|0]#!"
  FE_STEM_DUCHIES:1 "  Stem Duchies cultural innovation: #P [Character.MakeScope.Var('fe_stem_duchies_score').GetValue|0]#!"
  FE_CULTURAL_ACCEPTANCE:1 "  Cultural acceptance: #N +[Character.MakeScope.Var('fe_cultural_acceptance_score').GetValue|0]#!"
-
+ FE_CROWN_AUTHORITY:1 "  Crown Authority: #N +[Character.MakeScope.Var('fe_crown_authority_score').GetValue|0]#!"
