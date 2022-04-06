@@ -106,9 +106,14 @@ template fe_faction_member_tooltip {
 				}
 
 				fe_tooltip_line = {
-					name = "fe_kingdom_score"
-					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_kingdom_score').GetValue, '(CFixedPoint)0')]"
-					text = "FE_KINGDOM"
+					name = "fe_rank_score_positive"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_rank_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_RANK_POSITIVE"
+				}
+				fe_tooltip_line = {
+					name = "fe_rank_score_negative"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_rank_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_RANK_NEGATIVE"
 				}
 				fe_tooltip_line = {
 					name = "fe_grandeur_score"

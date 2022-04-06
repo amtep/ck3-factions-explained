@@ -16,5 +16,6 @@
  FE_GAME_STABILITY_NEGATIVE:1 "  Realm stability setting: #P [Character.MakeScope.Var('fe_game_stability_score').GetValue|0]#!"
  FE_SAME_FAITH_ELECTOR:1 "  Same [faith|El] feudal [elector|El]: #P [Character.MakeScope.Var('fe_same_faith_elector_score').GetValue|0]#!"
  FE_NOT_DE_JURE:1 "  Not de jure territory: #N +[Character.MakeScope.Var('fe_not_de_jure_score').GetValue|0]#!"
- FE_KINGDOM:1 "  Is a [Character.GetTitleAsNameNoTooltip]: #N +[Character.MakeScope.Var('fe_kingdom_score').GetValue|0]#!"
+ FE_RANK_POSITIVE:1 "  Is a [Character.GetTitleAsNameNoTooltip]: #N +[Character.MakeScope.Var('fe_rank_score').GetValue|0]#!"
+ FE_RANK_NEGATIVE:1 "  Is only a [Character.GetTitleAsNameNoTooltip]: #P [Character.MakeScope.Var('fe_rank_score').GetValue|0]#!"
  FE_GRANDEUR:1 "  Court has higher [grandeur|E] than [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy] court: #N +[Character.MakeScope.Var('fe_grandeur_score').GetValue|0]#!"
