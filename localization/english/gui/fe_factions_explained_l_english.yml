@@ -11,3 +11,6 @@
  FE_LEGALISM_SINS:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetFaith.GetName] is legalistic and [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy] sins: #N +[Character.MakeScope.Var('fe_legalism_sins').GetValue|0]#!"
  FE_INTIMIDATED:1 "  Intimidated: #P [Character.MakeScope.Var('fe_intimidated').GetValue|0]#!"
  FE_TARGET_DEBT:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstName] is in debt: #N +[Character.MakeScope.Var('fe_target_debt').GetValue|0]#!"
+ FE_GAME_DIFFICULTY:1 "  Game difficulty: #P [Character.MakeScope.Var('fe_game_difficulty_score').GetValue|0]#!"
+ FE_GAME_STABILITY_POSITIVE:1 "  Realm stability setting: #N +[Character.MakeScope.Var('fe_game_stability_score').GetValue|0]#!"
+ FE_GAME_STABILITY_NEGATIVE:1 "  Realm stability setting: #P [Character.MakeScope.Var('fe_game_stability_score').GetValue|0]#!"

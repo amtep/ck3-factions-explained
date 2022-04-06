@@ -126,6 +126,37 @@ template fe_faction_member_tooltip {
 					fonttintcolor = "[TooltipInfo.GetTintColor]"
 					alwaystransparent = no
 				}
+
+				textbox = {
+					name = "fe_game_difficulty_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_difficulty_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_GAME_DIFFICULTY"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+				textbox = {
+					name = "fe_game_stability_score_unstable"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_game_stability_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_GAME_STABILITY_POSITIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
+				textbox = {
+					name = "fe_game_stability_score_stable"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_stability_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_GAME_STABILITY_NEGATIVE"
+
+					using = DefaultTooltipText
+					layoutpolicy_horizontal = expanding
+					fonttintcolor = "[TooltipInfo.GetTintColor]"
+					alwaystransparent = no
+				}
 			}
 		}
 	}
