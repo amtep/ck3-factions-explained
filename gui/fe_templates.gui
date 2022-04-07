@@ -112,6 +112,11 @@ template fe_faction_member_tooltip {
 				}
 
 				fe_tooltip_line = {
+					name = "fe_not_rightful_liege_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_not_rightful_liege_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_NOT_RIGHTFUL_LIEGE"
+				}
+				fe_tooltip_line = {
 					name = "fe_not_de_jure_score"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_not_de_jure_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_NOT_DE_JURE"
