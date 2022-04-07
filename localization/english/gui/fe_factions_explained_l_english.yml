@@ -27,3 +27,4 @@
  FE_SUPPORTED_LIEGE:1 "  Supported [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy] claim before: #P [Character.MakeScope.Var('fe_supported_liege_score').GetValue|0]#!"
  FE_CLAIMANT_INCAPABLE:1 "  Claimant is [GetTrait('incapable').GetName( GetNullCharacter )]: #P [Character.MakeScope.Var('fe_claimant_incapable_score').GetValue|0]#!"
  FE_CLAIMANT_THEOCRATIC:1 "  Claimant is a theocratic ruler: #P [Character.MakeScope.Var('fe_claimant_theocratic_score').GetValue|0]#!"
+ FE_CLAIMANT_GENDER:1 "  Claimant is wrong gender: #P [Character.MakeScope.Var('fe_claimant_gender_score').GetValue|0]#!"

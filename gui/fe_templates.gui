@@ -168,6 +168,12 @@ template fe_faction_member_tooltip {
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_theocratic_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CLAIMANT_THEOCRATIC"
 				}
+
+				fe_tooltip_line = {
+					name = "fe_claimant_gender_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_gender_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_GENDER"
+				}
 			}
 		}
 	}
