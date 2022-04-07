@@ -41,6 +41,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claimant_de_jure_score value = 0 }
 	set_variable = { name = fe_claimant_lower_authority_score value = 0 }
 	set_variable = { name = fe_low_grandeur_score value = 0 }
+	set_variable = { name = fe_faction_culture_score value = 0 }
+	set_variable = { name = fe_ruling_caste_score value = 0 }
 
 	if = {
 		limit = {
@@ -186,6 +188,11 @@ fe_calculate_faction_desire = {
 
 		fe_calculate_not_de_jure_score = {
 			TARGET = root.joined_faction.faction_target
+		}
+
+		fe_populist_faction_modifiers = {
+			TARGET = root.joined_faction.faction_target
+			FACTION_CULTURE = root.joined_faction.var:faction_culture
 		}
 	}
 
@@ -354,6 +361,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_low_grandeur_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_faction_culture_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_ruling_caste_score
 	}
 }
 
@@ -1644,6 +1659,67 @@ fe_claimant_faction_modifiers = {
 		change_variable = {
 			name = fe_low_grandeur_score
 			add = 50
+		}
+	}
+}
+
+fe_populist_faction_modifiers = {
+	if = {
+		limit = {
+			NOT = { culture = { has_same_culture_heritage = $TARGET$.culture } }
+			NOT = { culture = { has_cultural_parameter = doesnt_care_about_culture_faith_in_factions } }
+			culture = { has_same_culture_heritage = $FACTION_CULTURE$ }
+		}
+
+		change_variable = {
+			name = fe_faction_culture_score
+			add = {
+				value = 50
+				if = {
+					limit = {
+						NOT = { culture = $TARGET$.culture }
+						culture = $FACTION_CULTURE$
+					}
+					add = 50
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			faith = $TARGET$.faith
+			NOT = { culture = { has_same_culture_heritage = $FACTION_CULTURE$ } }
+		}
+		change_variable = {
+			name = fe_faction_culture_score
+			add = -1000
+		}
+	}
+
+	if = {
+		limit = {
+			OR = {
+				has_relation_lover = $TARGET$
+				has_relation_friend = $TARGET$
+			}
+		}
+		change_variable = {
+			name = fe_target_relationship_score
+			add = -250
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { culture = $TARGET$.culture }
+			$TARGET$.culture = {
+				has_cultural_parameter = peasant_and_populist_factions_less_common
+			}
+		}
+		change_variable = {
+			name = fe_ruling_caste_score
+			add = -20
 		}
 	}
 }

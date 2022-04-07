@@ -276,6 +276,23 @@ template fe_faction_member_tooltip {
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_lower_authority_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CLAIMANT_LOWER_AUTHORITY"
 				}
+
+				fe_tooltip_line = {
+					name = "fe_faction_culture_score_negative"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_faction_culture_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_FACTION_CULTURE_NEGATIVE"
+				}
+				fe_tooltip_line = {
+					name = "fe_faction_culture_score_positive"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_faction_culture_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_FACTION_CULTURE_POSITIVE"
+				}
+
+				fe_tooltip_line = {
+					name = "fe_ruling_caste_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_ruling_caste_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_RULING_CASTE"
+				}
 			}
 		}
 	}
