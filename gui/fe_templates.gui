@@ -221,6 +221,12 @@ template fe_faction_member_tooltip {
 				}
 
 				fe_tooltip_line = {
+					name = "fe_claimant_culture_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_culture_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_CULTURE"
+				}
+
+				fe_tooltip_line = {
 					name = "fe_claimant_relationship_score"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_relationship_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CLAIMANT_RELATIONSHIP"

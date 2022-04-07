@@ -35,6 +35,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_target_relationship_score value = 0 }
 	set_variable = { name = fe_claimant_relationship_score value = 0 }
 	set_variable = { name = fe_target_too_young_score value = 0 }
+	set_variable = { name = fe_claimant_culture_score value = 0 }
 
 	if = {
 		limit = {
@@ -105,6 +106,7 @@ fe_calculate_faction_desire = {
 		fe_claimant_faction_modifiers = {
 			TARGET = root.joined_faction.faction_target
 			CLAIMANT = root.joined_faction.special_character
+			TITLE = root.joined_faction.special_title
 		}
 	}
 
@@ -320,6 +322,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_target_too_young_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_culture_score
 	}
 }
 
@@ -1287,4 +1293,143 @@ fe_claimant_faction_modifiers = {
 			add = 25
 		}
 	}
+
+	# Claimant's culture vs liege's culture.
+	# This is similar to the calculation for liberty faction,
+	# but different enough that we can't combine them.
+	set_variable = { name = fe_temp6 value = 0 }
+	if = {
+		limit = {
+			culture = {
+				NOR = {
+					this = $TARGET$.culture
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value >= 90
+					}
+					has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+				}
+				OR = {
+					this = $CLAIMANT$.culture
+					cultural_acceptance = {
+						target = $CLAIMANT$.culture
+						value >= 90
+					}
+				}
+			}
+		}
+
+		change_variable = {
+			name = fe_temp6
+			add = 50
+		}
+		# exact culture match is worth more
+		if = {
+			limit = {
+				culture = $CLAIMANT$.culture
+			}
+			change_variable = {
+				name = fe_temp6
+				add = 50
+			}
+		}
+
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 20
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				add = 25
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 35
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				add = 15
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 50
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				add = 10
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 70
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				add = 5
+			}
+		}
+		if = {
+			limit = {
+				culture = {
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value <= 80
+					}
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				add = 5
+			}
+		}
+		if = {
+			limit = {
+				$TARGET$ = {
+					knows_language_of_culture = root.culture
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				multiply = 0.5
+			}
+		}
+		if = {
+			limit = {
+				$TITLE$ = {
+					has_title_law = princely_elective_succession_law
+				}
+			}
+			change_variable = {
+				name = fe_temp6
+				multiply = 0.25
+			}
+		}
+	}
+	change_variable = {
+		name = fe_claimant_culture_score
+		add = var:fe_temp6
+	}
+	remove_variable = fe_temp6
 }
