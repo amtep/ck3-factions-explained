@@ -184,6 +184,9 @@ fe_calculate_faction_desire = {
 			EXTREME_STABILITY = -100
 		}
 
+		fe_calculate_not_de_jure_score = {
+			TARGET = root.joined_faction.faction_target
+		}
 	}
 
 	fe_legalism_virtue_and_sin = {
@@ -720,23 +723,7 @@ fe_calculate_game_settings = {
 	}
 }
 
-fe_independence_faction_modifiers = {
-	if = {
-		limit = {
-			$TARGET$.primary_title = {
-				has_order_of_succession = election
-				any_elector = {
-					this = root
-				}
-			}
-			$TARGET$.faith = root.faith
-		}
-		change_variable = {
-			name = fe_same_faith_elector_score
-			add = -150
-		}
-	}
-
+fe_calculate_not_de_jure_score = {
 	if = {
 		limit = {
 			OR = {
@@ -760,15 +747,36 @@ fe_independence_faction_modifiers = {
 
 		change_variable = {
 			name = fe_not_de_jure_score
-			add = 125
-		}
-		change_variable = {
-			name = fe_not_de_jure_score
 			add = {
-				value = sub_realm_size
-				multiply = 2
+				value = 125
+				add = {
+					value = sub_realm_size
+					multiply = 2
+				}
 			}
 		}
+	}
+}
+
+fe_independence_faction_modifiers = {
+	if = {
+		limit = {
+			$TARGET$.primary_title = {
+				has_order_of_succession = election
+				any_elector = {
+					this = root
+				}
+			}
+			$TARGET$.faith = root.faith
+		}
+		change_variable = {
+			name = fe_same_faith_elector_score
+			add = -150
+		}
+	}
+
+	fe_calculate_not_de_jure_score = {
+		TARGET = $TARGET$
 	}
 
 	if = {
