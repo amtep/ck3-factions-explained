@@ -191,6 +191,21 @@ template fe_faction_member_tooltip {
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_prefer_claimant_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_PREFER_CLAIMANT"
 				}
+				fe_tooltip_line = {
+					name = "fe_claimant_too_old_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_too_old_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_TOO_OLD"
+				}
+				fe_tooltip_line = {
+					name = "fe_claimant_too_young_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_too_young_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_TOO_YOUNG"
+				}
+				fe_tooltip_line = {
+					name = "fe_claimant_poor_health_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_poor_health_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_POOR_HEALTH"
+				}
 			}
 		}
 	}

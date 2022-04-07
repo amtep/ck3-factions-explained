@@ -27,6 +27,10 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_target_gender_score value = 0 }
 	set_variable = { name = fe_prefer_liege_score value = 0 }
 	set_variable = { name = fe_prefer_claimant_score value = 0 }
+	set_variable = { name = fe_claimant_too_old_score value = 0 }
+	set_variable = { name = fe_claimant_too_young_score value = 0 }
+	set_variable = { name = fe_claimant_poor_health_score value = 0 }
+	set_variable = { name = fe_claimant_no_children_score value = 0 }
 
 	if = {
 		limit = {
@@ -280,6 +284,18 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_prefer_claimant_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_too_old_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_too_young_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_poor_health_score
 	}
 }
 
@@ -1087,6 +1103,78 @@ fe_claimant_faction_modifiers = {
 				value = scope:opinion_of_target
 				multiply = -0.5
 			}
+		}
+	}
+
+	# Claimant too old?
+	if = {
+		limit = {
+			NOT = { $CLAIMANT$ = root }
+			$CLAIMANT$.age > 45
+		}
+		change_variable = {
+			name = fe_claimant_too_old_score
+			add = {
+				value = $CLAIMANT$.age
+				subtract = 45
+				multiply = -2
+			}
+		}
+	}
+
+	# Claimant too young?
+	if = {
+		limit = {
+			$CLAIMANT$ = { is_adult = no }
+		}
+		change_variable = {
+			name = fe_claimant_too_young_score
+			add = -25
+		}
+	}
+
+	# Claimant health
+	if = {
+		limit = {
+			NOT = { $CLAIMANT$ = root }
+			$CLAIMANT$.health < 1.5
+		}
+		change_variable = {
+			name = fe_claimant_poor_health_score
+			add = {
+				value = 1.5
+				subtract = $CLAIMANT$.health
+				multiply = -20
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { $CLAIMANT$ = root }
+			$CLAIMANT$.fertility <= 0.1
+			NOT = {
+				$CLAIMANT$ = {
+					any_child = {
+						count >= 1
+					}
+				}
+			}
+		}
+		change_variable = {
+			name = fe_claimant_no_children_score
+			add = -50
+		}
+	}
+
+	# "claimant is infirm" -> add it in to the poor health score
+	if = {
+		limit = {
+			$CLAIMANT$ = { has_trait = infirm }
+		}
+		change_variable = {
+			name = fe_claimant_poor_health_score
+			add = -50
 		}
 	}
 }
