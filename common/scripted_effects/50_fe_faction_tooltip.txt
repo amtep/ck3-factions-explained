@@ -24,6 +24,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claimant_incapable_score value = 0 }
 	set_variable = { name = fe_claimant_theocratic_score value = 0 }
 	set_variable = { name = fe_claimant_gender_score value = 0 }
+	set_variable = { name = fe_target_gender_score value = 0 }
 
 	if = {
 		limit = {
@@ -92,6 +93,7 @@ fe_calculate_faction_desire = {
 		}
 
 		fe_claimant_faction_modifiers = {
+			TARGET = root.joined_faction.faction_target
 			CLAIMANT = root.joined_faction.special_character
 		}
 	}
@@ -264,6 +266,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_gender_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_target_gender_score
 	}
 }
 
@@ -947,6 +953,34 @@ fe_claimant_faction_modifiers = {
 		change_variable = {
 			name = fe_claimant_gender_score
 			add = -50
+		}
+	}
+
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					faith = { has_doctrine = doctrine_gender_female_dominated }
+					$TARGET$ = { is_male = yes }
+					$CLAIMANT$ = {
+						is_female = yes
+						faith = root.faith
+					}
+				}
+				AND = {
+					faith = { has_doctrine = doctrine_gender_male_dominated }
+					$TARGET$ = { is_female = yes }
+					$CLAIMANT$ = {
+						is_male = yes
+						faith = root.faith
+					}
+				}
+			}
+		}
+
+		change_variable = {
+			name = fe_target_gender_score
+			add = 25
 		}
 	}
 }
