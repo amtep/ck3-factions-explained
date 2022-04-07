@@ -180,6 +180,17 @@ template fe_faction_member_tooltip {
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_gender_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_TARGET_GENDER"
 				}
+
+				fe_tooltip_line = {
+					name = "fe_prefer_liege_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_prefer_liege_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_PREFER_LIEGE"
+				}
+				fe_tooltip_line = {
+					name = "fe_prefer_claimant_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_prefer_claimant_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_PREFER_CLAIMANT"
+				}
 			}
 		}
 	}

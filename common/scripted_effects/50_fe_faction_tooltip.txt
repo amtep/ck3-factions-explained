@@ -25,6 +25,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claimant_theocratic_score value = 0 }
 	set_variable = { name = fe_claimant_gender_score value = 0 }
 	set_variable = { name = fe_target_gender_score value = 0 }
+	set_variable = { name = fe_prefer_liege_score value = 0 }
+	set_variable = { name = fe_prefer_claimant_score value = 0 }
 
 	if = {
 		limit = {
@@ -270,6 +272,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_target_gender_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_prefer_liege_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_prefer_claimant_score
 	}
 }
 
@@ -981,6 +991,102 @@ fe_claimant_faction_modifiers = {
 		change_variable = {
 			name = fe_target_gender_score
 			add = 25
+		}
+	}
+
+	# Powerful vassals who like the claimant more than their liege
+	# will get an extra opinion modifier.
+	# Instead of getting a separate line, it's just added in to
+	# the existing opinion modifier.
+	if = {
+		limit = {
+			is_powerful_vassal_of = $TARGET$
+			save_temporary_opinion_value_as = {
+				name = opinion_of_target
+				target = $TARGET$
+			}
+			opinion = {
+				target = $CLAIMANT$
+				value > scope:opinion_of_target
+			}
+			scope:opinion_of_target < 0
+		}
+
+		change_variable = {
+			name = fe_opinion_of_target
+			add = {
+				value = scope:opinion_of_target
+				multiply = -1.5
+			}
+		}
+	}
+
+	# -50 if they like the liege more than the claimant
+	if = {
+		limit = {
+			NOT = { $CLAIMANT$ = root }
+			save_temporary_opinion_value_as = {
+				name = opinion_of_target
+				target = $TARGET$
+			}
+			opinion = {
+				target = $CLAIMANT$
+				value < scope:opinion_of_target
+			}
+			# A chance to put your own culture on the throne
+			# cancels this modifier
+			NAND = {
+				culture = $CLAIMANT$.culture
+				NOT = { culture = $TARGET$.culture }
+			}
+		}
+		change_variable = {
+			name = fe_prefer_liege_score
+			add = -50
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { $CLAIMANT$ = root }
+			save_temporary_opinion_value_as = {
+				name = opinion_of_target
+				target = $TARGET$
+			}
+			save_temporary_opinion_value_as = {
+				name = opinion_of_claimant
+				target = $CLAIMANT$
+			}
+			scope:opinion_of_claimant > scope:opinion_of_target
+			scope:opinion_of_claimant > 0
+		}
+
+		change_variable = {
+			name = fe_prefer_claimant_score
+			add = {
+				value = scope:opinion_of_claimant
+				multiply = 1.5
+				subtract = scope:opinion_of_target
+			}
+		}
+	}
+
+	# Positive opinion of liege... this combines with the value already
+	# given by fe_calculate_opinion_modifier
+	if = {
+		limit = {
+			save_temporary_opinion_value_as = {
+				name = opinion_of_target
+				target = $TARGET$
+			}
+			scope:opinion_of_target > 0
+		}
+		change_variable = {
+			name = fe_opinion_of_target
+			add = {
+				value = scope:opinion_of_target
+				multiply = -0.5
+			}
 		}
 	}
 }
