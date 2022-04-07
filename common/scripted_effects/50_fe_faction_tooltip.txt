@@ -39,6 +39,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claimant_faith_score value = 0 }
 	set_variable = { name = fe_claim_uninteresting_score value = 0 }
 	set_variable = { name = fe_claimant_de_jure_score value = 0 }
+	set_variable = { name = fe_claimant_lower_authority_score value = 0 }
 
 	if = {
 		limit = {
@@ -341,6 +342,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_de_jure_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_lower_authority_score
 	}
 }
 
@@ -1574,6 +1579,48 @@ fe_claimant_faction_modifiers = {
 		change_variable = {
 			name = fe_claim_uninteresting_score
 			add = -200
+		}
+	}
+
+	if = {
+		limit = {
+			$TARGET$ = { has_realm_law = crown_authority_1 }
+			$CLAIMANT$ = { has_realm_law = crown_authority_0 }
+		}
+		change_variable = {
+			name = fe_claimant_lower_authority_score
+			add = 10
+		}
+	}
+	if = {
+		limit = {
+			$TARGET$ = { has_realm_law = crown_authority_2 }
+			$CLAIMANT$ = {
+				OR = {
+					has_realm_law = crown_authority_0
+					has_realm_law = crown_authority_1
+				}
+			}
+		}
+		change_variable = {
+			name = fe_claimant_lower_authority_score
+			add = 15
+		}
+	}
+	if = {
+		limit = {
+			$TARGET$ = { has_realm_law = crown_authority_3 }
+			$CLAIMANT$ = {
+				OR = {
+					has_realm_law = crown_authority_0
+					has_realm_law = crown_authority_1
+					has_realm_law = crown_authority_2
+				}
+			}
+		}
+		change_variable = {
+			name = fe_claimant_lower_authority_score
+			add = 15
 		}
 	}
 }
