@@ -219,6 +219,23 @@ template fe_faction_member_tooltip {
 					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_no_children_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CLAIMANT_NO_CHILDREN"
 				}
+
+				fe_tooltip_line = {
+					name = "fe_claimant_relationship_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_relationship_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_RELATIONSHIP"
+				}
+				fe_tooltip_line = {
+					name = "fe_target_relationship_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_relationship_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_TARGET_RELATIONSHIP"
+				}
+
+				fe_tooltip_line = {
+					name = "fe_target_too_young_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_too_young_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_TARGET_TOO_YOUNG"
+				}
 			}
 		}
 	}
