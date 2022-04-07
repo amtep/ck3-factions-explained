@@ -42,3 +42,5 @@
  FE_CLAIMANT_CULTURE:1 "  Prefers claimant's culture: #N +[Character.MakeScope.Var('fe_claimant_culture_score').GetValue|0]#!"
  FE_CLAIMANT_FAITH_POSITIVE:1 "  Claimant is [Character.MakeScope.Var('fe_faction').Faction.GetSpecialCharacter.GetFaith.GetAdjective]: #N +[Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]#!"
  FE_CLAIMANT_FAITH_NEGATIVE:1 "  Claimant is [Character.MakeScope.Var('fe_faction').Faction.GetSpecialCharacter.GetFaith.GetAdjective]: #P [Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]#!"
+ FE_CLAIM_LOW_TIER:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetSpecialTitle.GetName] is not important: #P [Character.MakeScope.Var('fe_claim_low_tier_score').GetValue|0]#!"
+ FE_CLAIMANT_DE_JURE:1 "  Claimant is my rightful liege: #N +[Character.MakeScope.Var('fe_claimant_de_jure_score').GetValue|0]#!"

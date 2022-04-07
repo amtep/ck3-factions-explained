@@ -37,6 +37,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_target_too_young_score value = 0 }
 	set_variable = { name = fe_claimant_culture_score value = 0 }
 	set_variable = { name = fe_claimant_faith_score value = 0 }
+	set_variable = { name = fe_claim_low_tier_score value = 0 }
+	set_variable = { name = fe_claimant_de_jure_score value = 0 }
 
 	if = {
 		limit = {
@@ -331,6 +333,14 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_faith_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claim_low_tier_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_de_jure_score
 	}
 }
 
@@ -1511,6 +1521,30 @@ fe_claimant_faction_modifiers = {
 				name = fe_claimant_faith_score
 				add = -1000
 			}
+		}
+	}
+
+	if = {
+		limit = {
+			$TITLE$.tier < $TARGET$.primary_title.tier
+			$TITLE$.tier < tier_kingdom
+		}
+		change_variable = {
+			name = fe_claim_low_tier_score
+			add = -500
+		}
+	}
+
+	if = {
+		limit = {
+			is_rightful_liege_of_trigger = {
+				VASSAL = root
+				LIEGE = $CLAIMANT$
+			}
+		}
+		change_variable = {
+			name = fe_claimant_de_jure_score
+			add = 100
 		}
 	}
 }
