@@ -297,6 +297,10 @@ fe_calculate_faction_desire = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_poor_health_score
 	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_no_children_score
+	}
 }
 
 # root is the faction member
