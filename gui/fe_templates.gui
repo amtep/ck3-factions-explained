@@ -255,9 +255,9 @@ template fe_faction_member_tooltip {
 				}
 
 				fe_tooltip_line = {
-					name = "fe_claim_low_tier_score"
-					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claim_low_tier_score').GetValue, '(CFixedPoint)0')]"
-					text = "FE_CLAIM_LOW_TIER"
+					name = "fe_claim_uninteresting_score"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claim_uninteresting_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIM_UNINTERESTING"
 				}
 
 				fe_tooltip_line = {
