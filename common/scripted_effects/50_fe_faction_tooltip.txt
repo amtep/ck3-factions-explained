@@ -31,6 +31,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claimant_too_young_score value = 0 }
 	set_variable = { name = fe_claimant_poor_health_score value = 0 }
 	set_variable = { name = fe_claimant_no_children_score value = 0 }
+	set_variable = { name = fe_am_claimant_score value = 0 }
 
 	if = {
 		limit = {
@@ -300,6 +301,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_no_children_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_am_claimant_score
 	}
 }
 
@@ -1179,6 +1184,24 @@ fe_claimant_faction_modifiers = {
 		change_variable = {
 			name = fe_claimant_poor_health_score
 			add = -50
+		}
+	}
+
+	if = {
+		limit = {
+			$CLAIMANT$ = root
+			NOT = { has_trait = content }
+		}
+		change_variable = {
+			name = fe_am_claimant_score
+			add = {
+				value = 50
+				add = {
+					value = ai_greed
+					multiply = 1.5
+					min = 0
+				}
+			}
 		}
 	}
 }
