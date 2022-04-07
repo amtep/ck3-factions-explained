@@ -165,7 +165,7 @@ template fe_faction_member_tooltip {
 
 				fe_tooltip_line = {
 					name = "fe_claimant_theocratic_score"
-					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_assertive_rulers_score').GetValue, '(CFixedPoint)0')]"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_theocratic_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CLAIMANT_THEOCRATIC"
 				}
 			}
