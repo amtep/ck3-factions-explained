@@ -893,6 +893,23 @@ fe_independence_faction_modifiers = {
 	remove_variable = fe_temp4
 }
 
+fe_assertive_rulers_legacy = {
+	if = {
+		limit = {
+			$TARGET$ = {
+				exists = dynasty
+				dynasty = {
+					has_dynasty_perk = glory_legacy_4
+				}
+			}
+		}
+		change_variable = {
+			name = fe_assertive_rulers_score
+			add = -20
+		}
+	}
+}
+
 fe_liberty_faction_modifiers = {
 	if = {
 		limit = { $TARGET$ = { has_realm_law = crown_authority_1 } }
@@ -916,19 +933,8 @@ fe_liberty_faction_modifiers = {
 		}
 	}
 
-	if = {
-		limit = {
-			$TARGET$ = {
-				exists = dynasty
-				dynasty = {
-					has_dynasty_perk = glory_legacy_4
-				}
-			}
-		}
-		change_variable = {
-			name = fe_assertive_rulers_score
-			add = -20
-		}
+	fe_assertive_rulers_legacy = {
+		TARGET = $TARGET$
 	}
 }
 
@@ -1203,5 +1209,9 @@ fe_claimant_faction_modifiers = {
 				}
 			}
 		}
+	}
+
+	fe_assertive_rulers_legacy = {
+		TARGET = $TARGET$
 	}
 }
