@@ -45,3 +45,4 @@
  FE_CLAIM_UNINTERESTING:1 "  Doesn't care about [Character.MakeScope.Var('fe_faction').Faction.GetSpecialTitle.GetName]: #P [Character.MakeScope.Var('fe_claim_uninteresting_score').GetValue|0]#!"
  FE_CLAIMANT_DE_JURE:1 "  Claimant is my rightful liege: #N +[Character.MakeScope.Var('fe_claimant_de_jure_score').GetValue|0]#!"
  FE_CLAIMANT_LOWER_AUTHORITY:1 "  Claimant has lower crown authority than [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe]: #N +[Character.MakeScope.Var('fe_claimant_lower_authority_score').GetValue|0]#!"
+ FE_LOW_GRANDEUR:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy] court has low [grandeur|E]: #N +[Character.MakeScope.Var('fe_low_grandeur_score').GetValue|0]#!"

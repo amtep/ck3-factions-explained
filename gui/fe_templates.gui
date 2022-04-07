@@ -132,6 +132,11 @@ template fe_faction_member_tooltip {
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_grandeur_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_GRANDEUR"
 				}
+				fe_tooltip_line = {
+					name = "fe_low_grandeur_score"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_low_grandeur_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_LOW_GRANDEUR"
+				}
 
 				fe_tooltip_line = {
 					name = "fe_toe_the_line_score"

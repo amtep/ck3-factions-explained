@@ -40,6 +40,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claim_uninteresting_score value = 0 }
 	set_variable = { name = fe_claimant_de_jure_score value = 0 }
 	set_variable = { name = fe_claimant_lower_authority_score value = 0 }
+	set_variable = { name = fe_low_grandeur_score value = 0 }
 
 	if = {
 		limit = {
@@ -346,6 +347,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_lower_authority_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_low_grandeur_score
 	}
 }
 
@@ -1621,6 +1626,16 @@ fe_claimant_faction_modifiers = {
 		change_variable = {
 			name = fe_claimant_lower_authority_score
 			add = 15
+		}
+	}
+
+	if = {
+		limit = {
+			$TARGET$.court_grandeur_current_level < $TARGET$.court_grandeur_minimum_expected_level
+		}
+		change_variable = {
+			name = fe_low_grandeur_score
+			add = 50
 		}
 	}
 }
