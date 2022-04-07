@@ -227,6 +227,17 @@ template fe_faction_member_tooltip {
 				}
 
 				fe_tooltip_line = {
+					name = "fe_claimant_faith_score_positive"
+					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_faith_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_FAITH_POSITIVE"
+				}
+				fe_tooltip_line = {
+					name = "fe_claimant_faith_score_negative"
+					visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_faith_score').GetValue, '(CFixedPoint)0')]"
+					text = "FE_CLAIMANT_FAITH_NEGATIVE"
+				}
+
+				fe_tooltip_line = {
 					name = "fe_claimant_relationship_score"
 					visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_relationship_score').GetValue, '(CFixedPoint)0')]"
 					text = "FE_CLAIMANT_RELATIONSHIP"

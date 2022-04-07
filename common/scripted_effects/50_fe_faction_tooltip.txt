@@ -36,6 +36,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_claimant_relationship_score value = 0 }
 	set_variable = { name = fe_target_too_young_score value = 0 }
 	set_variable = { name = fe_claimant_culture_score value = 0 }
+	set_variable = { name = fe_claimant_faith_score value = 0 }
 
 	if = {
 		limit = {
@@ -326,6 +327,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_claimant_culture_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimant_faith_score
 	}
 }
 
@@ -1432,4 +1437,80 @@ fe_claimant_faction_modifiers = {
 		add = var:fe_temp6
 	}
 	remove_variable = fe_temp6
+
+	if = {
+		limit = {
+			NOT = { faith = $TARGET$.faith }
+			NOT = {
+				culture = {
+					has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+				}
+			}
+			faith = $CLAIMANT$.faith
+		}
+
+		change_variable = {
+			name = fe_claimant_faith_score
+			add = 100
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { faith = $CLAIMANT$.faith }
+			NOT = {
+				culture = {
+					has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				faith = {
+					faith_hostility_level = {
+						target = $CLAIMANT$.faith
+						value = faith_astray_level
+					}
+				}
+			}
+
+			change_variable = {
+				name = fe_claimant_faith_score
+				add = -25
+			}
+		}
+
+		if = {
+			limit = {
+				faith = {
+					faith_hostility_level = {
+						target = $CLAIMANT$.faith
+						value = faith_hostile_level
+					}
+				}
+			}
+
+			change_variable = {
+				name = fe_claimant_faith_score
+				add = -250
+			}
+		}
+
+		if = {
+			limit = {
+				faith = {
+					faith_hostility_level = {
+						target = $CLAIMANT$.faith
+						value = faith_evil_level
+					}
+				}
+			}
+
+			change_variable = {
+				name = fe_claimant_faith_score
+				add = -1000
+			}
+		}
+	}
 }

@@ -38,5 +38,7 @@
  FE_AM_CLAIMANT:1 "  Is the claimant: #N +[Character.MakeScope.Var('fe_am_claimant_score').GetValue|0]#!"
  FE_CLAIMANT_RELATIONSHIP:1 "  Is the claimant's lover or friend: #N +[Character.MakeScope.Var('fe_claimant_relationship_score').GetValue|0]#!"
  FE_TARGET_RELATIONSHIP:1 "  Is [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy] lover or friend: #P [Character.MakeScope.Var('fe_target_relationship_score').GetValue|0]#!"
- FE_TARGET_TOO_YOUNG:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe] is a child: #N +[Character.MakeScope.Var('fe_target_too_young_score').GetValue|0]#!"
+ FE_TARGET_TOO_YOUNG:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNameOrMe|U] [Select_CString( Character.MakeScope.Var('fe_faction').Faction.GetTarget.IsLocalPlayer, 'are', 'is' )] a child: #N +[Character.MakeScope.Var('fe_target_too_young_score').GetValue|0]#!"
  FE_CLAIMANT_CULTURE:1 "  Prefers claimant's culture: #N +[Character.MakeScope.Var('fe_claimant_culture_score').GetValue|0]#!"
+ FE_CLAIMANT_FAITH_POSITIVE:1 "  Claimant is [Character.MakeScope.Var('fe_faction').Faction.GetSpecialCharacter.GetFaith.GetAdjective]: #N +[Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]#!"
+ FE_CLAIMANT_FAITH_NEGATIVE:1 "  Claimant is [Character.MakeScope.Var('fe_faction').Faction.GetSpecialCharacter.GetFaith.GetAdjective]: #P [Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]#!"
