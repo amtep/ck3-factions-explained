@@ -258,7 +258,6 @@ window = {
 
 				using = Animation_Character_Window_Refresh_Short
 
-				datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
 				# icon_button_small_round = {
 				# 	name = "interact_button"
 				# 	visible = "[Character.IsAlive]"
