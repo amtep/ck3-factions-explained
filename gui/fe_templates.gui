@@ -1,3 +1,30 @@
+template fe_calculate_faction_score {
+	datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
+	state = {
+		name = _mouse_hierarchy_enter
+		on_start = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End)]"
+	}
+}
+
+template fe_faction_member_icon {
+	container = {
+		name = "fe_faction_membership_icon"
+		datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
+		datacontext = "[CharacterWindow.GetCharacter]"
+
+		visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End)]"
+
+		icon = {
+			texture = "gfx/interface/icons/message_feed/faction.dds"
+			size = { 35 35 }
+		}
+
+		tooltipwidget = {
+			using = fe_faction_member_tooltip
+		}
+	}
+}
+
 template fe_faction_member_breakdown {
 	fe_tooltip_line = {
 		name = "fe_total_desire_positive"
@@ -304,23 +331,25 @@ template fe_faction_member_tooltip {
 }
 
 template fe_faction_screen_member_tooltip {
-	object_tooltip_pop_out = {
-		datacontext = "[FactionCharacterMember.GetMember]"
+	tooltipwidget = {
+		object_tooltip_pop_out = {
+			datacontext = "[FactionCharacterMember.GetMember]"
 
-		blockoverride "title_text" {
-			text = ""
-		}
+			blockoverride "title_text" {
+				text = ""
+			}
 
-		blockoverride "concept_link" {
-			text = [faction|E]
-		}
+			blockoverride "concept_link" {
+				text = [faction|E]
+			}
 
-		blockoverride "description_text" {
-			text = "[FactionCharacterMember.GetTooltip]"
-		}
+			blockoverride "description_text" {
+				text = "[FactionCharacterMember.GetTooltip]"
+			}
 
-		blockoverride "extra_data_after_description" {
-			using = fe_faction_member_breakdown 
+			blockoverride "extra_data_after_description" {
+				using = fe_faction_member_breakdown 
+			}
 		}
 	}
 }

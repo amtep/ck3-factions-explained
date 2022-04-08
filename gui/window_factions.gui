@@ -685,11 +685,7 @@ types  FactionWindow
 				item = {
 					container = {
 						datacontext = "[FactionCharacterMember.GetMember]"
-						datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
-						state = {
-							name = _mouse_hierarchy_enter
-							on_start = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End)]"
-						}
+						using = fe_calculate_faction_score
 
 						portrait_head_small = {
 							position = { 0 -0 }
@@ -697,9 +693,8 @@ types  FactionWindow
 
 							blockoverride "portrait_button_template_tooltip"
 							{
-								tooltipwidget = {
-									using = fe_faction_screen_member_tooltip
-								}
+								tooltip = "FactionCharacterMember.GetTooltip]"
+								using = fe_faction_screen_member_tooltip
 							}
 						}
 

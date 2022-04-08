@@ -40,14 +40,10 @@ window = {
 		widget = {
 			name = "main_characters"
 			datacontext = "[GetIllustration( 'character_view_bg' )]"
-			datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
-			state = {
-				name = _mouse_hierarchy_enter
-				on_start = "[ScriptedGui.Execute( GuiScope.SetRoot( Character.MakeScope ).End)]"
-			}
-
+			using = fe_calculate_faction_score
 			layoutpolicy_horizontal = expanding
 			size = { 0 305 }
+
 
 			widget = {
 				size = { 100% 100% }
@@ -681,22 +677,7 @@ window = {
 					}
 				}
 
-				container = {
-					name = "fe_faction_membership_icon"
-					datacontext = "[GetScriptedGui('fe_faction_membership_icon')]"
-					datacontext = "[CharacterWindow.GetCharacter]"
-
-					visible = "[ScriptedGui.IsShown( GuiScope.SetRoot( Character.MakeScope ).End)]"
-
-					icon = {
-						texture = "gfx/interface/icons/message_feed/faction.dds"
-						size = { 35 35 }
-					}
-
-					tooltipwidget = {
-						using = fe_faction_member_tooltip
-					}
-				}
+				using = fe_faction_member_icon
 
 				button_normal = {
 					name = "open_kill_list"
