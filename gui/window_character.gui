@@ -656,6 +656,7 @@ window = {
 					}
 				}
 
+				using = SBfA_character_stress_bar # Compat with Stress Bar for All
 				container = {
 					visible = "[GreaterThan_int32(GetDataModelSize(Character.GetKnownLanguages), '(int32)1')]"
 					parentanchor = hcenter
@@ -1959,6 +1960,7 @@ window = {
 				name = "tabs"
 				visible = "[CharacterWindow.AreNoneExpanded]"
 				layoutpolicy_horizontal = expanding
+				using = SMYC_council_button # Compat with Show Me Your Council
 
 				button_tab = {
 					name = "family_button"
