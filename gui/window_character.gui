@@ -851,8 +851,10 @@ window = {
 							}
 
 							expand = {}
+							hbox_mod_renamer = {} # Compat with Rename Anyone
 						}
 
+						hbox_mod_birth_death_dates = {} # Compat with Displayed Birth and Death Dates
 						hbox = {
 							name = "AI_personality"
 							layoutpolicy_horizontal = expanding
