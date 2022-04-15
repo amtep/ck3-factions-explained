@@ -693,7 +693,7 @@ types  FactionWindow
 
 							blockoverride "portrait_button_template_tooltip"
 							{
-								tooltip = "FactionCharacterMember.GetTooltip]"
+								tooltip = "[FactionCharacterMember.GetTooltip]"
 								using = fe_faction_screen_member_tooltip
 							}
 						}
