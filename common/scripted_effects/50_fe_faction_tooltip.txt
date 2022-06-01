@@ -1,7 +1,6 @@
 ﻿
 # root is the faction member
 fe_calculate_faction_desire = {
-	set_variable = { name = fe_faction_total_desire value = 0 }
 	set_variable = { name = fe_base_reluctance value = 0 }
 	set_variable = { name = fe_opinion_of_target value = 0 }
 	set_variable = { name = fe_different_faith value = 0 }
@@ -281,189 +280,56 @@ fe_calculate_faction_desire = {
 		THRESHOLD = root.joined_faction.faction_power_threshold
 	}
 
-	change_variable = {
+	set_variable = {
 		name = fe_faction_total_desire
-		add = var:fe_base_reluctance
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_opinion_of_target
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_different_faith
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_legalism_virtues
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_legalism_sins
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_intimidated
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_target_debt
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_game_difficulty_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_game_stability_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_same_faith_elector_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_not_de_jure_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_not_rightful_liege_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_rank_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_grandeur_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_toe_the_line_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_stem_duchies_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_cultural_acceptance_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_crown_authority_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_assertive_rulers_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_supported_liege_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_incapable_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_theocratic_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_gender_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_target_gender_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_prefer_liege_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_prefer_claimant_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_too_old_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_too_young_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_poor_health_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_no_children_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_am_claimant_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_target_relationship_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_relationship_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_target_too_young_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_culture_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_faith_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claim_uninteresting_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_de_jure_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimant_lower_authority_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_low_grandeur_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_faction_culture_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_ruling_caste_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_prefers_fracturing_faction_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_has_claim_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_short_reign_score
-	}
-	change_variable = {
-		name = fe_faction_total_desire
-		add = var:fe_claimants_of_my_culture_score
+		value = {
+			add = var:fe_base_reluctance
+			add = var:fe_opinion_of_target
+			add = var:fe_different_faith
+			add = var:fe_legalism_virtues
+			add = var:fe_legalism_sins
+			add = var:fe_intimidated
+			add = var:fe_target_debt
+			add = var:fe_game_difficulty_score
+			add = var:fe_game_stability_score
+			add = var:fe_same_faith_elector_score
+			add = var:fe_not_de_jure_score
+			add = var:fe_not_rightful_liege_score
+			add = var:fe_rank_score
+			add = var:fe_grandeur_score
+			add = var:fe_toe_the_line_score
+			add = var:fe_stem_duchies_score
+			add = var:fe_cultural_acceptance_score
+			add = var:fe_crown_authority_score
+			add = var:fe_assertive_rulers_score
+			add = var:fe_supported_liege_score
+			add = var:fe_claimant_incapable_score
+			add = var:fe_claimant_theocratic_score
+			add = var:fe_claimant_gender_score
+			add = var:fe_target_gender_score
+			add = var:fe_prefer_liege_score
+			add = var:fe_prefer_claimant_score
+			add = var:fe_claimant_too_old_score
+			add = var:fe_claimant_too_young_score
+			add = var:fe_claimant_poor_health_score
+			add = var:fe_claimant_no_children_score
+			add = var:fe_am_claimant_score
+			add = var:fe_target_relationship_score
+			add = var:fe_claimant_relationship_score
+			add = var:fe_target_too_young_score
+			add = var:fe_claimant_culture_score
+			add = var:fe_claimant_faith_score
+			add = var:fe_claim_uninteresting_score
+			add = var:fe_claimant_de_jure_score
+			add = var:fe_claimant_lower_authority_score
+			add = var:fe_low_grandeur_score
+			add = var:fe_faction_culture_score
+			add = var:fe_ruling_caste_score
+			add = var:fe_prefers_fracturing_faction_score
+			add = var:fe_has_claim_score
+			add = var:fe_short_reign_score
+			add = var:fe_claimants_of_my_culture_score
+		}
 	}
 }
 
