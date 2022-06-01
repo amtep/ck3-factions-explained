@@ -306,6 +306,12 @@ template fe_faction_member_breakdown {
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_ruling_caste_score').GetValue, '(CFixedPoint)0')]"
 		text = "FE_RULING_CASTE"
 	}
+
+	fe_tooltip_line = {
+		name = "fe_prefers_fracturing_faction_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_prefers_fracturing_faction_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_PREFERS_FRACTURING_FACTION"
+	}
 }
 
 template fe_faction_member_tooltip {

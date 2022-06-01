@@ -50,3 +50,4 @@
  FE_FACTION_CULTURE_NEGATIVE:1 "  Is [Character.GetCulture.GetName]: #P [Character.MakeScope.Var('fe_faction_culture_score').GetValue|0]#!"
  FE_FACTION_CULTURE_POSITIVE:1 "  Is [Character.GetCulture.GetName]: #N +[Character.MakeScope.Var('fe_faction_culture_score').GetValue|0]#!"
  FE_RULING_CASTE:1 "  [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessiveOrMy|U] culture has the Ruling Caste tradition: #P [Character.MakeScope.Var('fe_ruling_caste_score').GetValue|0]#!"
+ FE_PREFERS_FRACTURING_FACTION:1 "  Would rather join a $nation_fracturing_faction$: #P [Character.MakeScope.Var('fe_prefers_fracturing_faction_score').GetValue|0]#!"

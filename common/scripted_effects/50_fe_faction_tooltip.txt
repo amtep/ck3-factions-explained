@@ -44,6 +44,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_low_grandeur_score value = 0 }
 	set_variable = { name = fe_faction_culture_score value = 0 }
 	set_variable = { name = fe_ruling_caste_score value = 0 }
+	set_variable = { name = fe_prefers_fracturing_faction_score value = 0 }
 
 	if = {
 		limit = {
@@ -374,6 +375,10 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_ruling_caste_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_prefers_fracturing_faction_score
 	}
 }
 
@@ -980,6 +985,43 @@ fe_independence_faction_modifiers = {
 		add = var:fe_temp4
 	}
 	remove_variable = fe_temp4
+
+	if = {
+		limit = {
+			$TARGET$ = {
+				any_character_struggle = { involvement = involved }
+			}
+			OR = {
+				is_powerful_vassal_of = $TARGET$
+				$TARGET$ = {
+					any_targeting_faction = {
+						faction_is_type = nation_fracturing_faction
+					}
+				}
+			}
+		}
+		change_variable = {
+			name = fe_prefers_fracturing_faction_score
+			add = {
+				value = 0
+				# Some phases give a low chance...
+				if = {
+					limit = {
+						$TARGET$ = {
+							any_character_struggle = {
+								involvement = involved
+								OR = {
+									is_struggle_phase = struggle_iberia_phase_hostility
+									is_struggle_phase = struggle_iberia_phase_opportunity
+								}
+							}
+						}
+					}
+					add = -100
+				}
+			}
+		}
+	}
 }
 
 fe_assertive_rulers_legacy = {
