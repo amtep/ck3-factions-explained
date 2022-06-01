@@ -336,6 +336,48 @@ template fe_faction_member_breakdown {
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimants_of_my_culture_score').GetValue, '(CFixedPoint)0')]"
 		text = "FE_CLAIMANTS_OF_MY_CULTURE"
 	}
+
+	fe_tooltip_line = {
+		name = "fe_missing_de_jure_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_missing_de_jure_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_MISSING_DE_JURE"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_target_tribal_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_tribal_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_TARGET_TRIBAL"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_recently_lost_wars_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_recently_lost_wars_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_RECENTLY_LOST_WARS"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_clan_problems_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_clan_problems_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_CLAN_PROBLEMS"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_struggle_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_struggle_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_STRUGGLE"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_dislikes_heir_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_dislikes_heir_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_DISLIKES_HEIR"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_target_elective_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_elective_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_TARGET_ELECTIVE"
+	}
 }
 
 template fe_faction_member_tooltip {

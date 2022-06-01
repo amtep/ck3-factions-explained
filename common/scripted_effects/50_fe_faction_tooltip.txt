@@ -48,6 +48,13 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_target_too_low_rank_score value = 0 }
 	set_variable = { name = fe_short_reign_score value = 0 }
 	set_variable = { name = fe_claimants_of_my_culture_score value = 0 }
+	set_variable = { name = fe_missing_de_jure_score value = 0 }
+	set_variable = { name = fe_target_tribal_score value = 0 }
+	set_variable = { name = fe_recently_lost_wars_score value = 0 }
+	set_variable = { name = fe_clan_problems_score value = 0 }
+	set_variable = { name = fe_struggle_score value = 0 }
+	set_variable = { name = fe_dislikes_heir_score value = 0 }
+	set_variable = { name = fe_target_elective_score value = 0 }
 
 	if = {
 		limit = {
@@ -189,6 +196,61 @@ fe_calculate_faction_desire = {
 			BASE_VALUE = 15
 			KNOWS_LANGUAGE_MULT = 1.0
 		}
+
+		fe_calculate_missing_de_jure_score = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		if = {
+			limit = {
+				root.joined_faction.faction_target = {
+					has_variable = recently_lost_wars
+				}
+			}
+			change_variable = {
+				name = fe_recently_lost_wars_score
+				add = {
+					add = root.joined_faction.faction_target.var:recently_lost_wars
+					multiply = 30
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				root.joined_faction.faction_target = {
+					has_government = tribal_government
+				}
+			}
+			change_variable = {
+				name = fe_target_tribal_score
+				add = 50
+			}
+		}
+
+		fe_calculate_clan_problems_score = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		fe_calculate_struggle_score = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		fe_calculate_dislikes_heir_score = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		if = {
+			limit = {
+				root.joined_faction.faction_target.primary_title = {
+					has_order_of_succession = election
+				}
+			}
+			change_variable = {
+				name = fe_target_elective_score
+				add = -100
+			}
+		}
 	}
 	if = {
 		limit = {
@@ -329,6 +391,13 @@ fe_calculate_faction_desire = {
 			add = var:fe_has_claim_score
 			add = var:fe_short_reign_score
 			add = var:fe_claimants_of_my_culture_score
+			add = var:fe_missing_de_jure_score
+			add = var:fe_target_tribal_score
+			add = var:fe_recently_lost_wars_score
+			add = var:fe_clan_problems_score
+			add = var:fe_struggle_score
+			add = var:fe_dislikes_heir_score
+			add = var:fe_target_elective_score
 		}
 	}
 }
@@ -1758,6 +1827,123 @@ fe_calculate_cultural_acceptance_score = {
 					}
 					multiply = $KNOWS_LANGUAGE_MULT$
 				}
+			}
+		}
+	}
+}
+
+fe_calculate_missing_de_jure_score = {
+	change_variable = {
+		name = fe_missing_de_jure_score
+		add = {
+			value = 0
+			$TARGET$ = {
+				every_held_title = {
+					limit = { NOT = { $TARGET$ = { completely_controls = prev } } }
+					add = {
+						if = {
+							limit = { tier = tier_empire }
+							add = 50
+						}
+						else_if = {
+							limit = { tier = tier_kingdom }
+							add = 20
+						}
+						else_if = {
+							limit = { tier = tier_duchy }
+							add = 15
+						}
+						else_if = {
+							limit = { tier = tier_county }
+							add = 10
+						}
+						#bigger penalty for the primary_title
+						if = {
+							limit = { this = $TARGET$.primary_title }
+							add = 50
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+fe_calculate_clan_problems_score = {
+	if = {
+		limit = { $TARGET$ = { has_government = clan_government } }
+		change_variable = {
+			name = fe_clan_problems_score
+			add = {
+				value = 0
+				$TARGET$ = {
+					every_vassal = {
+						limit = {
+							is_powerful_vassal_of = $TARGET$
+							NOT = { is_allied_to = $TARGET$ }
+						}
+						add = 25
+					}
+				}
+			}
+		}
+	}
+}
+
+fe_calculate_struggle_score = {
+	if = {
+		#limit = { $TARGET$ = { any_character_struggle = { involvement = involved } } }
+		change_variable = {
+			name = fe_struggle_score
+			add = {
+				value = 0
+				# Some phases give a low chance...
+				if = {
+					limit = {
+						$TARGET$ = {
+							any_character_struggle = {
+								involvement = involved
+								is_struggle_phase = struggle_iberia_phase_hostility
+							}
+						}
+					}
+					add = 25
+				}
+				# ... & some phases give a high chance.
+				else_if = {
+					limit = {
+						$TARGET$ = {
+							any_character_struggle = {
+								involvement = involved
+								is_struggle_phase = struggle_iberia_phase_opportunity
+							}
+						}
+					}
+					add = 50 # High chance in opportunity
+				}
+			}
+		}
+	}
+}
+
+fe_calculate_dislikes_heir_score = {
+	if = {
+		limit = {
+			exists = $TARGET$.primary_heir
+			NOT = { root = $TARGET$.primary_heir }
+			save_temporary_opinion_value_as = {
+				name = opinion_of_heir
+				target = $TARGET$.primary_heir
+				scope:opinion_of_heir < 0
+			}
+		}
+		change_variable = {
+			name = fe_dislikes_heir_score
+			# This looks like a bug in Paradox's code.
+			# They multiply by 1.5 but should probably be -1.5
+			add = {
+				value = scope:opinion_of_heir
+				multiply = 1.5
 			}
 		}
 	}
