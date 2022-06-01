@@ -98,6 +98,12 @@ template fe_faction_member_breakdown {
 	}
 
 	fe_tooltip_line = {
+		name = "fe_short_reign_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_short_reign_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_SHORT_REIGN"
+	}
+
+	fe_tooltip_line = {
 		name = "fe_game_difficulty_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_difficulty_score').GetValue, '(CFixedPoint)0')]"
 		text = "FE_GAME_DIFFICULTY"
@@ -311,6 +317,24 @@ template fe_faction_member_breakdown {
 		name = "fe_prefers_fracturing_faction_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_prefers_fracturing_faction_score').GetValue, '(CFixedPoint)0')]"
 		text = "FE_PREFERS_FRACTURING_FACTION"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_has_claim_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_has_claim_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_HAS_CLAIM"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_target_too_low_rank_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_too_low_rank_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_TARGET_TOO_LOW_RANK"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_claimants_of_my_culture_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimants_of_my_culture_score').GetValue, '(CFixedPoint)0')]"
+		text = "FE_CLAIMANTS_OF_MY_CULTURE"
 	}
 }
 

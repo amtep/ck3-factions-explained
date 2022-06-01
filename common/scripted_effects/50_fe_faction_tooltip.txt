@@ -45,6 +45,10 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_faction_culture_score value = 0 }
 	set_variable = { name = fe_ruling_caste_score value = 0 }
 	set_variable = { name = fe_prefers_fracturing_faction_score value = 0 }
+	set_variable = { name = fe_has_claim_score value = 0 }
+	set_variable = { name = fe_target_too_low_rank_score value = 0 }
+	set_variable = { name = fe_short_reign_score value = 0 }
+	set_variable = { name = fe_claimants_of_my_culture_score value = 0 }
 
 	if = {
 		limit = {
@@ -122,10 +126,79 @@ fe_calculate_faction_desire = {
 	if = {
 		limit = {
 			joined_faction = {
+				faction_is_type = nation_fracturing_faction
+			}
+		}
+
+		change_variable = {
+			name = fe_base_reluctance
+			add = -150
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_weak_claim_on = root.joined_faction.faction_target.primary_title
+					has_claim_on = root.joined_faction.faction_target.primary_title
+				}
+
+			}
+			change_variable = {
+				name = fe_has_claim_score
+				add = -1000
+			}
+		}
+
+		if = {
+			limit = {
+				root.joined_faction.faction_target.primary_title.tier < tier_kingdom
+			}
+			change_variable = {
+				name = fe_target_too_low_rank_score
+				add = -1000
+			}
+		}
+
+		fe_calculate_opinion_modifier = {
+			OPINION_MULTIPLIER = -0.5
+			MAX_FROM_OPINION = 100
+		}
+
+		fe_calculate_short_reign_score = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		if = {
+			limit = {
+				root.joined_faction.faction_target = {
+					primary_title = {
+						any_claimant = {
+							count > 0
+							culture = root.culture
+						}
+					}
+				}
+			}
+			change_variable = {
+				name = fe_claimants_of_my_culture_score
+				add = -100
+			}
+		}
+
+		fe_calculate_cultural_acceptance_score = {
+			TARGET = root.joined_faction.faction_target
+			BASE_VALUE = 15
+			KNOWS_LANGUAGE_MULT = 1.0
+		}
+	}
+	if = {
+		limit = {
+			joined_faction = {
 				OR = {
 					faction_is_type = independence_faction
 					faction_is_type = liberty_faction
 					faction_is_type = claimant_faction
+					faction_is_type = nation_fracturing_faction
 				}
 			}
 		}
@@ -379,6 +452,18 @@ fe_calculate_faction_desire = {
 	change_variable = {
 		name = fe_faction_total_desire
 		add = var:fe_prefers_fracturing_faction_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_has_claim_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_short_reign_score
+	}
+	change_variable = {
+		name = fe_faction_total_desire
+		add = var:fe_claimants_of_my_culture_score
 	}
 }
 
@@ -878,113 +963,11 @@ fe_independence_faction_modifiers = {
 		}
 	}
 
-	set_variable = { name = fe_temp4 value = 0 }
-	if = {
-		limit = {
-			culture = {
-				NOR = {
-					this = $TARGET$.culture
-					cultural_acceptance = {
-						target = $TARGET$.culture
-						value >= 90
-					}
-					has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
-				}
-			}
-		}
-
-		change_variable = {
-			name = fe_temp4
-			add = 20
-		}
-
-		if = {
-			limit = {
-				culture = {
-					cultural_acceptance = {
-						target = $TARGET$.culture
-						value <= 20
-					}
-				}
-			}
-			change_variable = {
-				name = fe_temp4
-				add = 20
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					cultural_acceptance = {
-						target = $TARGET$.culture
-						value <= 35
-					}
-				}
-			}
-			change_variable = {
-				name = fe_temp4
-				add = 15
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					cultural_acceptance = {
-						target = $TARGET$.culture
-						value <= 50
-					}
-				}
-			}
-			change_variable = {
-				name = fe_temp4
-				add = 10
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					cultural_acceptance = {
-						target = $TARGET$.culture
-						value <= 70
-					}
-				}
-			}
-			change_variable = {
-				name = fe_temp4
-				add = 5
-			}
-		}
-		if = {
-			limit = {
-				culture = {
-					cultural_acceptance = {
-						target = $TARGET$.culture
-						value <= 80
-					}
-				}
-			}
-			change_variable = {
-				name = fe_temp4
-				add = 5
-			}
-		}
-		if = {
-			limit = {
-				$TARGET$ = {
-					knows_language_of_culture = prev.culture
-				}
-			}
-			change_variable = {
-				name = fe_temp4
-				multiply = 0.5
-			}
-		}
+	fe_calculate_cultural_acceptance_score = {
+		TARGET = $TARGET$
+		BASE_VALUE = 20
+		KNOWS_LANGUAGE_MULT = 0.5
 	}
-	change_variable = {
-		name = fe_cultural_acceptance_score
-		add = var:fe_temp4
-	}
-	remove_variable = fe_temp4
 
 	if = {
 		limit = {
@@ -1782,6 +1765,134 @@ fe_populist_faction_modifiers = {
 		change_variable = {
 			name = fe_ruling_caste_score
 			add = -20
+		}
+	}
+}
+
+# from nation_fracturing_faction_modifiers
+fe_calculate_short_reign_score = {
+	change_variable = {
+		name = fe_short_reign_score
+		add = {
+			value = 0
+			if =  {
+				limit =  {
+					$TARGET$ = {
+						primary_title = {
+							title_held_years <= 1
+						}
+					}
+				}
+				add = 20
+			}
+			if =  {
+				limit =  {
+					$TARGET$ = {
+						primary_title = {
+							title_held_years <= 5
+						}
+					}
+				}
+				add = 10
+			}
+			if =  {
+				limit =  {
+					$TARGET$ = {
+						primary_title = {
+							title_held_years <= 10
+						}
+					}
+				}
+				add = 10
+			}
+		}
+	}
+}
+
+fe_calculate_cultural_acceptance_score = {
+	if = {
+		limit = {
+			culture = {
+				NOR = {
+					this = $TARGET$.culture
+					cultural_acceptance = {
+						target = $TARGET$.culture
+						value >= 90
+					}
+					has_cultural_parameter = doesnt_care_about_culture_faith_in_factions
+				}
+			}
+		}
+
+		change_variable = {
+			name = fe_cultural_acceptance_score
+			add = {
+				value = $BASE_VALUE$
+
+				if = {
+					limit = {
+						culture = {
+							cultural_acceptance = {
+								target = $TARGET$.culture
+								value <= 20
+							}
+						}
+					}
+					add = 20
+				}
+				if = {
+					limit = {
+						culture = {
+							cultural_acceptance = {
+								target = $TARGET$.culture
+								value <= 35
+							}
+						}
+					}
+					add = 15
+				}
+				if = {
+					limit = {
+						culture = {
+							cultural_acceptance = {
+								target = $TARGET$.culture
+								value <= 50
+							}
+						}
+					}
+					add = 10
+				}
+				if = {
+					limit = {
+						culture = {
+							cultural_acceptance = {
+								target = $TARGET$.culture
+								value <= 70
+							}
+						}
+					}
+					add = 5
+				}
+				if = {
+					limit = {
+						culture = {
+							cultural_acceptance = {
+								target = $TARGET$.culture
+								value <= 80
+							}
+						}
+					}
+					add = 5
+				}
+				if = {
+					limit = {
+						$TARGET$ = {
+							knows_language_of_culture = prev.culture
+						}
+					}
+					multiply = $KNOWS_LANGUAGE_MULT$
+				}
+			}
 		}
 	}
 }
