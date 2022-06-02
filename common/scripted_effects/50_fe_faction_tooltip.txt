@@ -1934,8 +1934,8 @@ fe_calculate_dislikes_heir_score = {
 			save_temporary_opinion_value_as = {
 				name = opinion_of_heir
 				target = $TARGET$.primary_heir
-				scope:opinion_of_heir < 0
 			}
+			scope:opinion_of_heir < 0
 		}
 		change_variable = {
 			name = fe_dislikes_heir_score
