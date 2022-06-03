@@ -1,0 +1,65 @@
+The directory test_games contains a savefile that has examples of (nearly) every string used in the mod. This makes it easier to test localization changes.
+
+FE_FACTION_MEMBER: Emperor of Saffarid, Vali Shayan of Zaranj
+FE_FACTION_MEMBER_TT: Same
+FE_TOTAL_NEGATIVE: Same
+FE_TOTAL_POSITIVE: Emperor of Saffarid, Amir Feraz of Jabal Qufs
+FE_BASE_RELUCTANCE: Same
+FE_OPINION_NEGATIVE: Emperor of Saffarid, Vali Shayan of Zaranj
+FE_OPINION_POSITIVE: Emperor of Saffarid, Amir Feraz of Jabal Qufs
+FE_DIFFERENT_FAITH: Caliph of Abbasid, Prince Ashot of Armenian Principalities
+FE_LEGALISM_VIRTUES: Emperor of Saffarid, Amir Feraz of Jabal Qufs
+FE_LEGALISM_SINS: Same
+FE_INTIMIDATED: Emperor of Saffarid, Vali of Bost. Note: the player is never intimidated 
+FE_TARGET_DEBT: Same
+FE_GAME_DIFFICULTY: Start new game, set difficulty to easy
+FE_GAME_STABILITY_POSITIVE: Start new game, set realm stability to unstable
+FE_GAME_STABILITY_NEGATIVE: Start new game, set realm stability to stable
+FE_SAME_FAITH_ELECTOR: King of West Francia, Duke Gauzfrid of Neustria
+FE_NOT_RIGHTFUL_LIEGE: Sultan of Al-Andalus, Emir Bakr of al-Gharb
+FE_NOT_DE_JURE: King of West Francia, Duke Bernat of Toulouse
+FE_RANK_POSITIVE: Caliph of Abbasid, Prince Ashot of Armenian Principalities
+FE_RANK_NEGATIVE: Emperor of Saffarid, Vali Hurmiz of Bost
+FE_GRANDEUR: Caliph of Abbasid, Prince Ashot of Armenian Principalities
+FE_TOE_THE_LINE: Same
+FE_STEM_DUCHIES: King of West Francia, Duke Bernat of Toulouse
+FE_CULTURAL_ACCEPTANCE: Same
+FE_CROWN_AUTHORITY: King of West Francia, Duke Ramnulf of Aquitaine
+FE_ASSERTIVE_RULERS: Same
+FE_SUPPORTED_LIEGE: King of East Francia, Duke Hrođulfr of Holland
+FE_CLAIMANT_INCAPABLE: Same
+FE_CLAIMANT_THEOCRATIC: Same
+FE_CLAIMANT_GENDER: King of East Francia, Count Giselbert of Brabant
+FE_TARGET_GENDER: Queen of Italy, Duke Erlulf of Provence
+FE_PREFER_LIEGE: Same
+FE_PREFER_CLAIMANT: King of East Francia, Count Giselbert of Brabant
+FE_CLAIMANT_TOO_OLD: Queen of Italy, Duke Erlulf of Provence
+FE_CLAIMANT_TOO_YOUNG: Queen of Italy, Duke Adalberto of Tuscany
+FE_CLAIMANT_POOR_HEALTH: Same
+FE_CLAIMANT_NO_CHILDREN: Same
+FE_AM_CLAIMANT: King of East Francia, Duke Karlmann of Bavaria
+FE_CLAIMANT_RELATIONSHIP: King of East Francia, Count Giselbert of Brabant
+FE_TARGET_RELATIONSHIP: Same
+FE_TARGET_TOO_YOUNG: High Chief of Lusatia, Chief Stanislav of Jilobor
+FE_CLAIMANT_CULTURE: King of East Francia, Count Giselbert of Brabant
+FE_CLAIMANT_FAITH_POSITIVE: Sultan of Al-Andalus, Sheikh Ahmad of Isbiliyyah
+FE_CLAIMANT_FAITH_NEGATIVE: King of East Francia, Count Giselbert of Brabant
+FE_CLAIM_UNINTERESTING: Same
+FE_CLAIMANT_DE_JURE: King of East Francia, Count Philipp of Rothenberg
+FE_CLAIMANT_LOWER_AUTHORITY: Same
+FE_LOW_GRANDEUR: Same
+FE_FACTION_CULTURE_NEGATIVE: King of East Francia, Duke Miron of Gothia
+FE_FACTION_CULTURE_POSITIVE: King of East Francia, Duke Antso of Gascogne
+FE_RULING_CASTE: Same
+FE_PREFERS_FRACTURING_FACTION: Can't test without the DLC
+FE_HAS_CLAIM: Sultan of Al-Andalus, Emir of Batalyaws
+FE_TARGET_TOO_LOW_RANK: Petty Kingdom of Wessex, Earl Offa of East Sea E
+FE_SHORT_REIGN: Same
+FE_CLAIMANTS_OF_MY_CULTURE: Same
+FE_MISSING_DE_JURE: Sultan of Al-Andalus, Emir of Batalyaws
+FE_TARGET_TRIBAL: Khaganate of Khazaria, High Chieftain Zachariah of Don Valley
+FE_RECENTLY_LOST_WARS: Sultan of Al-Andalus, Emir of Batalyaws
+FE_CLAN_PROBLEMS: Same 
+FE_STRUGGLE: Cannot test without the DLC
+FE_DISLIKES_HEIR: Sultan of Al-Andalus, Emir of Batalyaws
+FE_TARGET_ELECTIVE: Kingdom of West Francia, Duke Hugo of Anjou
