@@ -55,6 +55,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_struggle_score value = 0 }
 	set_variable = { name = fe_target_elective_score value = 0 }
 	set_variable = { name = fe_umayyad_game_rule_score value = 0 }
+	set_variable = { name = fe_forced_to_join_score value = 0 }
 
 	if = {
 		limit = {
@@ -342,6 +343,15 @@ fe_calculate_faction_desire = {
 		THRESHOLD = root.joined_faction.faction_power_threshold
 	}
 
+	# A fake modifier to represent a builtin game feature
+	if = {
+		limit = { is_forced_into_faction = yes }
+		change_variable = {
+			name = fe_forced_to_join_score
+			add = 10000
+		}
+	}
+
 	set_variable = {
 		name = fe_faction_total_desire
 		value = {
@@ -398,6 +408,7 @@ fe_calculate_faction_desire = {
 			add = var:fe_struggle_score
 			add = var:fe_target_elective_score
 			add = var:fe_umayyad_game_rule_score
+			add = var:fe_forced_to_join_score
 		}
 	}
 }

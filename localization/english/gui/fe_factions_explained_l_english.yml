@@ -12,6 +12,7 @@
  FE_TOTAL:1 "Total"
  FE_WILL_LEAVE_SOON:1 "(will leave the faction soon)"
  FE_BASE_RELUCTANCE:1 "Base reluctance"
+ FE_FORCED_TO_JOIN:1 "Was forced to join this faction"
  FE_OPINION_NEGATIVE:1 "Likes $FE_target_accusative$"
  FE_OPINION_POSITIVE:1 "Dislikes $FE_target_accusative$"
  FE_DIFFERENT_FAITH:1 "$FE_target_faith$ is [GetHostilityLevelName(Character.GetFaith.GetHostilityLevelTowards(Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetFaith))]"

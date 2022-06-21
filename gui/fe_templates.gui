@@ -45,6 +45,12 @@ template fe_faction_member_breakdown {
 	}
 
 	fe_tooltip_line = {
+		name = "fe_forced_to_join_score"
+		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_forced_to_join_score').GetValue, '(CFixedPoint)0')]"
+		text = "  [Localize('FE_FORCED_TO_JOIN')]: #N +[Character.MakeScope.Var('fe_forced_to_join_score').GetValue|0]#!"
+	}
+
+	fe_tooltip_line = {
 		name = "fe_am_claimant_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_am_claimant_score').GetValue, '(CFixedPoint)0')]"
 		text = "  [Localize('FE_AM_CLAIMANT')]: #N +[Character.MakeScope.Var('fe_am_claimant_score').GetValue|0]#!"
