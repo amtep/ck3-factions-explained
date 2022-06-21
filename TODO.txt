@@ -1,0 +1,3 @@
+Translations:
+  german: FE_UMAYYAD_GAME_RULE new
+  german: FE_MISSING_DE_JURE changed

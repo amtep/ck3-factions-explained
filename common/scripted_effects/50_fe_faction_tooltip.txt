@@ -53,8 +53,8 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_recently_lost_wars_score value = 0 }
 	set_variable = { name = fe_clan_problems_score value = 0 }
 	set_variable = { name = fe_struggle_score value = 0 }
-	set_variable = { name = fe_dislikes_heir_score value = 0 }
 	set_variable = { name = fe_target_elective_score value = 0 }
+	set_variable = { name = fe_umayyad_game_rule_score value = 0 }
 
 	if = {
 		limit = {
@@ -166,7 +166,7 @@ fe_calculate_faction_desire = {
 		}
 
 		fe_calculate_opinion_modifier = {
-			OPINION_MULTIPLIER = -0.5
+			OPINION_MULTIPLIER = -2
 			MAX_FROM_OPINION = 100
 		}
 
@@ -187,7 +187,7 @@ fe_calculate_faction_desire = {
 			}
 			change_variable = {
 				name = fe_claimants_of_my_culture_score
-				add = -100
+				add = -200
 			}
 		}
 
@@ -224,7 +224,7 @@ fe_calculate_faction_desire = {
 			}
 			change_variable = {
 				name = fe_target_tribal_score
-				add = 50
+				add = 25
 			}
 		}
 
@@ -233,10 +233,6 @@ fe_calculate_faction_desire = {
 		}
 
 		fe_calculate_struggle_score = {
-			TARGET = root.joined_faction.faction_target
-		}
-
-		fe_calculate_dislikes_heir_score = {
 			TARGET = root.joined_faction.faction_target
 		}
 
@@ -250,6 +246,10 @@ fe_calculate_faction_desire = {
 				name = fe_target_elective_score
 				add = -100
 			}
+		}
+
+		fe_calculate_umayyad_game_rule_score = {
+			TARGET = root.joined_faction.faction_target
 		}
 	}
 	if = {
@@ -396,8 +396,8 @@ fe_calculate_faction_desire = {
 			add = var:fe_recently_lost_wars_score
 			add = var:fe_clan_problems_score
 			add = var:fe_struggle_score
-			add = var:fe_dislikes_heir_score
 			add = var:fe_target_elective_score
+			add = var:fe_umayyad_game_rule_score
 		}
 	}
 }
@@ -1839,7 +1839,10 @@ fe_calculate_missing_de_jure_score = {
 			value = 0
 			$TARGET$ = {
 				every_held_title = {
-					limit = { NOT = { $TARGET$ = { completely_controls = prev } } }
+					limit = {
+						this.tier = prev.primary_title.tier
+						NOT = { $TARGET$ = { completely_controls = prev } }
+					}
 					add = {
 						if = {
 							limit = { tier = tier_empire }
@@ -1882,7 +1885,7 @@ fe_calculate_clan_problems_score = {
 							is_powerful_vassal_of = $TARGET$
 							NOT = { is_allied_to = $TARGET$ }
 						}
-						add = 25
+						add = 10
 					}
 				}
 			}
@@ -1907,7 +1910,7 @@ fe_calculate_struggle_score = {
 							}
 						}
 					}
-					add = 25
+					add = 50
 				}
 				# ... & some phases give a high chance.
 				else_if = {
@@ -1919,32 +1922,43 @@ fe_calculate_struggle_score = {
 							}
 						}
 					}
-					add = 50 # High chance in opportunity
+					add = 100 # High chance in opportunity
 				}
 			}
 		}
 	}
 }
 
-fe_calculate_dislikes_heir_score = {
+fe_calculate_umayyad_game_rule_score = {
 	if = {
 		limit = {
-			exists = $TARGET$.primary_heir
-			NOT = { root = $TARGET$.primary_heir }
-			save_temporary_opinion_value_as = {
-				name = opinion_of_heir
-				target = $TARGET$.primary_heir
+			has_game_rule = dissolution_after_caliph_death
+			$TARGET$ = {
+				this = character:73683
+				any_held_title = {
+					this = title:k_andalusia
+				}
 			}
-			scope:opinion_of_heir < 0
 		}
 		change_variable = {
-			name = fe_dislikes_heir_score
-			# This looks like a bug in Paradox's code.
-			# They multiply by 1.5 but should probably be -1.5
-			add = {
-				value = scope:opinion_of_heir
-				multiply = 1.5
+			name = fe_umayyad_game_rule_score
+			add = -1000
+		}
+	}
+
+	if = {
+		limit = {
+			has_game_rule = dissolution_historical_date
+			current_date < 1020.1.1
+			$TARGET$ = {
+				any_held_title = {
+					this = title:k_andalusia
+				}
 			}
+		}
+		change_variable = {
+			name = fe_umayyad_game_rule_score
+			add = -1000
 		}
 	}
 }

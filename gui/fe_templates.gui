@@ -368,15 +368,15 @@ template fe_faction_member_breakdown {
 	}
 
 	fe_tooltip_line = {
-		name = "fe_dislikes_heir_score"
-		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_dislikes_heir_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_DISLIKES_HEIR')]: #P [Character.MakeScope.Var('fe_dislikes_heir_score').GetValue|0]#!"
-	}
-
-	fe_tooltip_line = {
 		name = "fe_target_elective_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_elective_score').GetValue, '(CFixedPoint)0')]"
 		text = "  [Localize('FE_TARGET_ELECTIVE')]: #P [Character.MakeScope.Var('fe_target_elective_score').GetValue|0]#!"
+	}
+
+	fe_tooltip_line = {
+		name = "fe_umayyad_game_rule_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue, '(CFixedPoint)0')]"
+		text = "  [Localize('FE_UMAYYAD_GAME_RULE')]: #P [Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue|0]#!"
 	}
 }
 
