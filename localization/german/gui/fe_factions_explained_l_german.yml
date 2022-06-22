@@ -63,7 +63,7 @@
  FE_TARGET_TOO_LOW_RANK:1 "$FE_target_is$ bloß ein [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitleAsNameNoTooltip]"
  FE_SHORT_REIGN:1 "$FE_target_possessive_U$ kurze Herrschaft"
  FE_CLAIMANTS_OF_MY_CULTURE:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetName] hat Anspruchssteller von [Character.GetTitledFirstNamePossessiveOrMy]er Kultur"
- FE_MISSING_DE_JURE:1 "$FE_target$ besitzt nicht alles von $FE_target_possessive_pronoun_neuter$ de jure-Land für jede [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetTierAsNameNoTooltip]"
+ FE_MISSING_DE_JURE:1 "$FE_target$ besitzt nicht alles von $FE_target_possessive_pronoun_neuter$ de jure-Land für jedes [Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetTierAsNameNoTooltip]"
  FE_TARGET_TRIBAL:1 "$FE_target_is$ [tribal|E]"
  FE_RECENTLY_LOST_WARS:1 "$FE_target$ verlor kürzlich Kriege"
  FE_CLAN_PROBLEMS:1 "$FE_target_accusative$ fehlt es an Bündnissen mit mächtigen Vasallen"
