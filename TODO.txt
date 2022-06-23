@@ -1,4 +1,0 @@
-Translations:
-  german: FE_UMAYYAD_GAME_RULE new
-  german: FE_MISSING_DE_JURE changed
-  german: FE_FORCED_TO_JOIN new
