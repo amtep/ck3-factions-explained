@@ -29,360 +29,362 @@ template fe_faction_member_breakdown {
 	fe_tooltip_line = {
 		name = "fe_total_desire_positive"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
-		text = "[Localize('FE_TOTAL')]: #N +[Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]#!"
+		text = "[Localize('FE_TOTAL')][Localize('FE_pos')][Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]"
+		margin_left = 0
 	}
 
 	fe_tooltip_line = {
 		name = "fe_total_desire_negative"
 		visible = "[LessThanOrEqualTo_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
-		text = "[Localize('FE_TOTAL')]: #P [Character.MakeScope.Var('fe_faction_total_desire').GetValue|0]#! [Localize('FE_WILL_LEAVE_SOON')]"
+		text = "[Localize('FE_TOTAL')][Localize('FE_neg')][Character.MakeScope.Var('fe_faction_total_desire').GetValue|0][Localize('FE_WILL_LEAVE_SOON')]"
+		margin_left = 0
 	}
 
 	fe_tooltip_line = {
 		name = "fe_base_reluctance"
 		visible = "[LessThan_CFixedPoint( Character.MakeScope.Var('fe_base_reluctance').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_BASE_RELUCTANCE')]: #P [Character.MakeScope.Var('fe_base_reluctance').GetValue|0]#!"
+		text = "[Localize('FE_BASE_RELUCTANCE')][Localize('FE_neg')][Character.MakeScope.Var('fe_base_reluctance').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_forced_to_join_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_forced_to_join_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_FORCED_TO_JOIN')]: #N +[Character.MakeScope.Var('fe_forced_to_join_score').GetValue|0]#!"
+		text = "[Localize('FE_FORCED_TO_JOIN')][Localize('FE_pos')][Character.MakeScope.Var('fe_forced_to_join_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_am_claimant_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_am_claimant_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_AM_CLAIMANT')]: #N +[Character.MakeScope.Var('fe_am_claimant_score').GetValue|0]#!"
+		text = "[Localize('FE_AM_CLAIMANT')][Localize('FE_pos')][Character.MakeScope.Var('fe_am_claimant_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_crown_authority_score"
 		visible = "[GreaterThan_CFixedPoint( Character.MakeScope.Var('fe_crown_authority_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CROWN_AUTHORITY')]: #N +[Character.MakeScope.Var('fe_crown_authority_score').GetValue|0]#!"
+		text = "[Localize('FE_CROWN_AUTHORITY')][Localize('FE_pos')][Character.MakeScope.Var('fe_crown_authority_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_opinion_positive"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_OPINION_POSITIVE')]: #N +[Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
+		text = "[Localize('FE_OPINION_POSITIVE')][Localize('FE_pos')][Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_opinion_negative"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_opinion_of_target').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_OPINION_NEGATIVE')]: #P [Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]#!"
+		text = "[Localize('FE_OPINION_NEGATIVE')][Localize('FE_neg')][Character.MakeScope.Var('fe_opinion_of_target').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_different_faith"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_different_faith').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_DIFFERENT_FAITH')]: #N +[Character.MakeScope.Var('fe_different_faith').GetValue|0]#!"
+		text = "[Localize('FE_DIFFERENT_FAITH')][Localize('FE_pos')][Character.MakeScope.Var('fe_different_faith').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_legalism_virtues"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_legalism_virtues').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_LEGALISM_VIRTUES')]: #P [Character.MakeScope.Var('fe_legalism_virtues').GetValue|0]#!"
+		text = "[Localize('FE_LEGALISM_VIRTUES')][Localize('FE_neg')][Character.MakeScope.Var('fe_legalism_virtues').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_legalism_sins"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_legalism_sins').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_LEGALISM_SINS')]: #N +[Character.MakeScope.Var('fe_legalism_sins').GetValue|0]#!"
+		text = "[Localize('FE_LEGALISM_SINS')][Localize('FE_pos')][Character.MakeScope.Var('fe_legalism_sins').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_intimidated"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_intimidated').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_INTIMIDATED')]: #P [Character.MakeScope.Var('fe_intimidated').GetValue|0]#!"
+		text = "[Localize('FE_INTIMIDATED')][Localize('FE_neg')][Character.MakeScope.Var('fe_intimidated').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_target_debt"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_debt').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_DEBT')]: #N +[Character.MakeScope.Var('fe_target_debt').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_DEBT')][Localize('FE_pos')][Character.MakeScope.Var('fe_target_debt').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_short_reign_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_short_reign_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_SHORT_REIGN')]: #N +[Character.MakeScope.Var('fe_short_reign_score').GetValue|0]#!"
+		text = "[Localize('FE_SHORT_REIGN')][Localize('FE_pos')][Character.MakeScope.Var('fe_short_reign_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_game_difficulty_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_difficulty_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_GAME_DIFFICULTY')]: #P [Character.MakeScope.Var('fe_game_difficulty_score').GetValue|0]#!"
+		text = "[Localize('FE_GAME_DIFFICULTY')][Localize('FE_neg')][Character.MakeScope.Var('fe_game_difficulty_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_game_stability_score_unstable"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_game_stability_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_GAME_STABILITY')]: #N +[Character.MakeScope.Var('fe_game_stability_score').GetValue|0]#!"
+		text = "[Localize('FE_GAME_STABILITY')][Localize('FE_pos')][Character.MakeScope.Var('fe_game_stability_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_game_stability_score_stable"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_game_stability_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_GAME_STABILITY')]: #P [Character.MakeScope.Var('fe_game_stability_score').GetValue|0]#!"
+		text = "[Localize('FE_GAME_STABILITY')][Localize('FE_neg')][Character.MakeScope.Var('fe_game_stability_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_same_faith_elector_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_same_faith_elector_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_SAME_FAITH_ELECTOR')]: #P [Character.MakeScope.Var('fe_same_faith_elector_score').GetValue|0]#!"
+		text = "[Localize('FE_SAME_FAITH_ELECTOR')][Localize('FE_neg')][Character.MakeScope.Var('fe_same_faith_elector_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_not_rightful_liege_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_not_rightful_liege_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_NOT_RIGHTFUL_LIEGE')]: #N +[Character.MakeScope.Var('fe_not_rightful_liege_score').GetValue|0]#!"
+		text = "[Localize('FE_NOT_RIGHTFUL_LIEGE')][Localize('FE_pos')][Character.MakeScope.Var('fe_not_rightful_liege_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_not_de_jure_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_not_de_jure_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_NOT_DE_JURE')]: #N +[Character.MakeScope.Var('fe_not_de_jure_score').GetValue|0]#!"
+		text = "[Localize('FE_NOT_DE_JURE')][Localize('FE_pos')][Character.MakeScope.Var('fe_not_de_jure_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_rank_score_positive"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_rank_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_RANK_POSITIVE')]: #N +[Character.MakeScope.Var('fe_rank_score').GetValue|0]#!"
+		text = "[Localize('FE_RANK_POSITIVE')][Localize('FE_pos')][Character.MakeScope.Var('fe_rank_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_rank_score_negative"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_rank_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_RANK_NEGATIVE')]: #P [Character.MakeScope.Var('fe_rank_score').GetValue|0]#!"
+		text = "[Localize('FE_RANK_NEGATIVE')][Localize('FE_neg')][Character.MakeScope.Var('fe_rank_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_grandeur_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_grandeur_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_GRANDEUR')]: #N +[Character.MakeScope.Var('fe_grandeur_score').GetValue|0]#!"
+		text = "[Localize('FE_GRANDEUR')][Localize('FE_pos')][Character.MakeScope.Var('fe_grandeur_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_low_grandeur_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_low_grandeur_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_LOW_GRANDEUR')]: #N +[Character.MakeScope.Var('fe_low_grandeur_score').GetValue|0]#!"
+		text = "[Localize('FE_LOW_GRANDEUR')][Localize('FE_pos')][Character.MakeScope.Var('fe_low_grandeur_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_toe_the_line_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_toe_the_line_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TOE_THE_LINE')]: #P [Character.MakeScope.Var('fe_toe_the_line_score').GetValue|0]#!"
+		text = "[Localize('FE_TOE_THE_LINE')][Localize('FE_neg')][Character.MakeScope.Var('fe_toe_the_line_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_stem_duchies_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_stem_duchies_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_STEM_DUCHIES')]: #P [Character.MakeScope.Var('fe_stem_duchies_score').GetValue|0]#!"
+		text = "[Localize('FE_STEM_DUCHIES')][Localize('FE_neg')][Character.MakeScope.Var('fe_stem_duchies_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_cultural_acceptance_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_cultural_acceptance_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CULTURAL_ACCEPTANCE')]: #N +[Character.MakeScope.Var('fe_cultural_acceptance_score').GetValue|0]#!"
+		text = "[Localize('FE_CULTURAL_ACCEPTANCE')][Localize('FE_pos')][Character.MakeScope.Var('fe_cultural_acceptance_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_assertive_rulers_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_assertive_rulers_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_ASSERTIVE_RULERS')]: #P [Character.MakeScope.Var('fe_assertive_rulers_score').GetValue|0]#!"
+		text = "[Localize('FE_ASSERTIVE_RULERS')][Localize('FE_neg')][Character.MakeScope.Var('fe_assertive_rulers_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_supported_liege_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_supported_liege_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_SUPPORTED_LIEGE')]: #P [Character.MakeScope.Var('fe_supported_liege_score').GetValue|0]#!"
+		text = "[Localize('FE_SUPPORTED_LIEGE')][Localize('FE_neg')][Character.MakeScope.Var('fe_supported_liege_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_incapable_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_incapable_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_INCAPABLE')]: #P [Character.MakeScope.Var('fe_claimant_incapable_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_INCAPABLE')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_incapable_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_theocratic_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_theocratic_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_THEOCRATIC')]: #P [Character.MakeScope.Var('fe_claimant_theocratic_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_THEOCRATIC')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_theocratic_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_gender_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_gender_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_GENDER')]: #P [Character.MakeScope.Var('fe_claimant_gender_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_GENDER')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_gender_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_target_gender_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_gender_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_GENDER')]: #N +[Character.MakeScope.Var('fe_target_gender_score').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_GENDER')][Localize('FE_pos')][Character.MakeScope.Var('fe_target_gender_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_prefer_liege_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_prefer_liege_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_PREFER_LIEGE')]: #P [Character.MakeScope.Var('fe_prefer_liege_score').GetValue|0]#!"
+		text = "[Localize('FE_PREFER_LIEGE')][Localize('FE_neg')][Character.MakeScope.Var('fe_prefer_liege_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_prefer_claimant_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_prefer_claimant_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_PREFER_CLAIMANT')]: #N +[Character.MakeScope.Var('fe_prefer_claimant_score').GetValue|0]#!"
+		text = "[Localize('FE_PREFER_CLAIMANT')][Localize('FE_pos')][Character.MakeScope.Var('fe_prefer_claimant_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_too_old_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_too_old_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_TOO_OLD')]: #P [Character.MakeScope.Var('fe_claimant_too_old_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_TOO_OLD')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_too_old_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_claimant_too_young_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_too_young_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_TOO_YOUNG')]: #P [Character.MakeScope.Var('fe_claimant_too_young_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_TOO_YOUNG')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_too_young_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_claimant_poor_health_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_poor_health_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_POOR_HEALTH')]: #P [Character.MakeScope.Var('fe_claimant_poor_health_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_POOR_HEALTH')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_poor_health_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_no_children_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_no_children_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_NO_CHILDREN')]: #P [Character.MakeScope.Var('fe_claimant_no_children_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_NO_CHILDREN')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_no_children_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_culture_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_culture_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_CULTURE')]: #N +[Character.MakeScope.Var('fe_claimant_culture_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_CULTURE')][Localize('FE_pos')][Character.MakeScope.Var('fe_claimant_culture_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_faith_score_positive"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_faith_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_FAITH')]: #N +[Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_FAITH')][Localize('FE_pos')][Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_claimant_faith_score_negative"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_faith_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_FAITH')]: #P [Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_FAITH')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimant_faith_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_relationship_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_relationship_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_RELATIONSHIP')]: #N +[Character.MakeScope.Var('fe_claimant_relationship_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_RELATIONSHIP')][Localize('FE_pos')][Character.MakeScope.Var('fe_claimant_relationship_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_target_relationship_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_relationship_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_RELATIONSHIP')]: #P [Character.MakeScope.Var('fe_target_relationship_score').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_RELATIONSHIP')][Localize('FE_neg')][Character.MakeScope.Var('fe_target_relationship_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_target_too_young_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_too_young_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_TOO_YOUNG')]: #N +[Character.MakeScope.Var('fe_target_too_young_score').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_TOO_YOUNG')][Localize('FE_pos')][Character.MakeScope.Var('fe_target_too_young_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claim_uninteresting_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claim_uninteresting_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIM_UNINTERESTING')]: #P [Character.MakeScope.Var('fe_claim_uninteresting_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIM_UNINTERESTING')][Localize('FE_neg')][Character.MakeScope.Var('fe_claim_uninteresting_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_de_jure_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_de_jure_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_DE_JURE')]: #N +[Character.MakeScope.Var('fe_claimant_de_jure_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_DE_JURE')][Localize('FE_pos')][Character.MakeScope.Var('fe_claimant_de_jure_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimant_lower_authority_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_claimant_lower_authority_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANT_LOWER_AUTHORITY')]: #N +[Character.MakeScope.Var('fe_claimant_lower_authority_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANT_LOWER_AUTHORITY')][Localize('FE_pos')][Character.MakeScope.Var('fe_claimant_lower_authority_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_faction_culture_score_negative"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_faction_culture_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_FACTION_CULTURE')]: #P [Character.MakeScope.Var('fe_faction_culture_score').GetValue|0]#!"
+		text = "[Localize('FE_FACTION_CULTURE')][Localize('FE_neg')][Character.MakeScope.Var('fe_faction_culture_score').GetValue|0]"
 	}
 	fe_tooltip_line = {
 		name = "fe_faction_culture_score_positive"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_faction_culture_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_FACTION_CULTURE')]: #N +[Character.MakeScope.Var('fe_faction_culture_score').GetValue|0]#!"
+		text = "[Localize('FE_FACTION_CULTURE')][Localize('FE_pos')][Character.MakeScope.Var('fe_faction_culture_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_ruling_caste_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_ruling_caste_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_RULING_CASTE')]: #P [Character.MakeScope.Var('fe_ruling_caste_score').GetValue|0]#!"
+		text = "[Localize('FE_RULING_CASTE')][Localize('FE_neg')][Character.MakeScope.Var('fe_ruling_caste_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_prefers_fracturing_faction_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_prefers_fracturing_faction_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_PREFERS_FRACTURING_FACTION')]: #P [Character.MakeScope.Var('fe_prefers_fracturing_faction_score').GetValue|0]#!"
+		text = "[Localize('FE_PREFERS_FRACTURING_FACTION')][Localize('FE_neg')][Character.MakeScope.Var('fe_prefers_fracturing_faction_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_has_claim_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_has_claim_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_HAS_CLAIM')]: #P [Character.MakeScope.Var('fe_has_claim_score').GetValue|0]#!"
+		text = "[Localize('FE_HAS_CLAIM')][Localize('FE_neg')][Character.MakeScope.Var('fe_has_claim_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_target_too_low_rank_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_too_low_rank_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_TOO_LOW_RANK')]: #P [Character.MakeScope.Var('fe_target_too_low_rank_score').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_TOO_LOW_RANK')][Localize('FE_neg')][Character.MakeScope.Var('fe_target_too_low_rank_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_claimants_of_my_culture_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_claimants_of_my_culture_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAIMANTS_OF_MY_CULTURE')]: #P [Character.MakeScope.Var('fe_claimants_of_my_culture_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAIMANTS_OF_MY_CULTURE')][Localize('FE_neg')][Character.MakeScope.Var('fe_claimants_of_my_culture_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_missing_de_jure_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_missing_de_jure_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_MISSING_DE_JURE')]: #N +[Character.MakeScope.Var('fe_missing_de_jure_score').GetValue|0]#!"
+		text = "[Localize('FE_MISSING_DE_JURE')][Localize('FE_pos')][Character.MakeScope.Var('fe_missing_de_jure_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_target_tribal_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_target_tribal_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_TRIBAL')]: #N +[Character.MakeScope.Var('fe_target_tribal_score').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_TRIBAL')][Localize('FE_pos')][Character.MakeScope.Var('fe_target_tribal_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_recently_lost_wars_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_recently_lost_wars_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_RECENTLY_LOST_WARS')]: #N +[Character.MakeScope.Var('fe_recently_lost_wars_score').GetValue|0]#!"
+		text = "[Localize('FE_RECENTLY_LOST_WARS')][Localize('FE_pos')][Character.MakeScope.Var('fe_recently_lost_wars_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_clan_problems_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_clan_problems_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_CLAN_PROBLEMS')]: #N +[Character.MakeScope.Var('fe_clan_problems_score').GetValue|0]#!"
+		text = "[Localize('FE_CLAN_PROBLEMS')][Localize('FE_pos')][Character.MakeScope.Var('fe_clan_problems_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_struggle_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_struggle_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_STRUGGLE')]: #N +[Character.MakeScope.Var('fe_struggle_score').GetValue|0]#!"
+		text = "[Localize('FE_STRUGGLE')][Localize('FE_pos')][Character.MakeScope.Var('fe_struggle_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_target_elective_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_target_elective_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_TARGET_ELECTIVE')]: #P [Character.MakeScope.Var('fe_target_elective_score').GetValue|0]#!"
+		text = "[Localize('FE_TARGET_ELECTIVE')][Localize('FE_neg')][Character.MakeScope.Var('fe_target_elective_score').GetValue|0]"
 	}
 
 	fe_tooltip_line = {
 		name = "fe_umayyad_game_rule_score"
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue, '(CFixedPoint)0')]"
-		text = "  [Localize('FE_UMAYYAD_GAME_RULE')]: #P [Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue|0]#!"
+		text = "[Localize('FE_UMAYYAD_GAME_RULE')][Localize('FE_neg')][Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue|0]"
 	}
 }
 
@@ -439,5 +441,6 @@ types FeTypes
 		layoutpolicy_horizontal = expanding
 		fonttintcolor = "[TooltipInfo.GetTintColor]"
 		alwaystransparent = no
+		margin_left = 20
 	}
 }
