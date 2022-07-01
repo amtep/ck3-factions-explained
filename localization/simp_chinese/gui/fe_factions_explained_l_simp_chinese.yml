@@ -61,7 +61,7 @@
  FE_TARGET_TOO_LOW_RANK:1 "$FE_target$只是个[Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitleAsNameNoTooltip]"
  FE_SHORT_REIGN:1 "$FE_target_possessive_U$短暂统治"
  FE_CLAIMANTS_OF_MY_CULTURE:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetName]有[Character.GetTitledFirstNamePossessiveOrMy]文化的宣称者"
- FE_MISSING_DE_JURE:2 "$FE_target$ [Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('', '')]不拥有$FE_target_possessive_pronoun$法理土地对所有[Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetTierAsNameNoTooltip]"
+ FE_MISSING_DE_JURE:2 "$FE_target$ [Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('', '')]不拥有$FE_target_possessive_pronoun$所有[Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetTierAsNameNoTooltip]的法理领土"
  FE_TARGET_TRIBAL:1 "$FE_target_is$ [tribal|E]"
  FE_RECENTLY_LOST_WARS:1 "$FE_target$近期在战争中失败"
  FE_CLAN_PROBLEMS:1 "$FE_target$ [Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('缺少', '缺少')] 和强力封臣联盟"
