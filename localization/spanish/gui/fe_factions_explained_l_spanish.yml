@@ -1,7 +1,7 @@
 ﻿l_spanish:
  FE_target:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('Tú', Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstName)]" 
  FE_target_L:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('tú', Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstName)]" 
- FE_target_is:1 "$FE_target$ [Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('tienes', 'is')]" 
+ FE_target_is:1 "$FE_target$ [Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('tienes', 'es')]" 
  FE_target_accusative:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('tú', Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstName)]" 
  FE_target_possessive:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('tu', Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessive)]"
  FE_target_possessive_U:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.LocalPlayerString('Tu', Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetTitledFirstNamePossessive)]"
