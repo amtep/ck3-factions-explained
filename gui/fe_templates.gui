@@ -53,6 +53,12 @@ template fe_faction_member_breakdown {
 	}
 
 	fe_tooltip_line = {
+		name = "fe_LTAF_loyalty_score"
+		visible = "[NotEqualTo_CFixedPoint(Character.MakeScope.Var('fe_LTAF_loyalty_score').GetValue, '(CFixedPoint)0')]"
+		text = "[Localize('FE_LTAF_LOYALTY')]: [Character.MakeScope.Var('fe_LTAF_loyalty_score').GetValue|0=-]"
+	}
+
+	fe_tooltip_line = {
 		name = "fe_am_claimant_score"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_am_claimant_score').GetValue, '(CFixedPoint)0')]"
 		text = "[Localize('FE_AM_CLAIMANT')]: [Character.MakeScope.Var('fe_am_claimant_score').GetValue|0=-]"

@@ -2,6 +2,7 @@
 # root is the faction member
 fe_calculate_faction_desire = {
 	set_variable = { name = fe_base_reluctance value = 0 }
+	set_variable = { name = fe_LTAF_loyalty_score value = 0 } # compat
 	set_variable = { name = fe_opinion_of_target value = 0 }
 	set_variable = { name = fe_different_faith value = 0 }
 	set_variable = { name = fe_legalism_virtues value = 0 }
@@ -256,6 +257,29 @@ fe_calculate_faction_desire = {
 	if = {
 		limit = {
 			joined_faction = {
+				faction_is_type = loyalist_faction
+			}
+		}
+		
+		fe_intimidated = {
+			POWER = 0
+			THRESHOLD = 100000
+		}
+
+		fe_calculate_debt = {
+			TARGET = root.joined_faction.faction_target
+			SCORE_PER_DEBT_LEVEL = -10
+		}
+
+		change_variable = {
+			name = fe_LTAF_loyalty_score
+			add = LTAF_loyalty
+		}
+	}
+
+	if = {
+		limit = {
+			joined_faction = {
 				OR = {
 					faction_is_type = independence_faction
 					faction_is_type = liberty_faction
@@ -263,6 +287,11 @@ fe_calculate_faction_desire = {
 					faction_is_type = nation_fracturing_faction
 				}
 			}
+		}
+
+		change_variable = {
+			name = fe_LTAF_loyalty_score
+			subtract = LTAF_loyalty
 		}
 
 		fe_calculate_faith_modifier = {
@@ -333,14 +362,28 @@ fe_calculate_faction_desire = {
 		}
 	}
 
-	fe_legalism_virtue_and_sin = {
-		SCORE_PER_TRAIT = 25
-		TARGET = root.joined_faction.faction_target
-	}
+	if = {
+		limit = {
+			joined_faction = {
+				OR = {
+					faction_is_type = independence_faction
+					faction_is_type = liberty_faction
+					faction_is_type = claimant_faction
+					faction_is_type = nation_fracturing_faction
+					faction_is_type = populist_faction
+				}
+			}
+		}
 
-	fe_intimidated = {
-		POWER = root.joined_faction.faction_power
-		THRESHOLD = root.joined_faction.faction_power_threshold
+		fe_legalism_virtue_and_sin = {
+			SCORE_PER_TRAIT = 25
+			TARGET = root.joined_faction.faction_target
+		}
+
+		fe_intimidated = {
+			POWER = root.joined_faction.faction_power
+			THRESHOLD = root.joined_faction.faction_power_threshold
+		}
 	}
 
 	# A fake modifier to represent a builtin game feature
@@ -356,6 +399,7 @@ fe_calculate_faction_desire = {
 		name = fe_faction_total_desire
 		value = {
 			add = var:fe_base_reluctance
+			add = var:fe_LTAF_loyalty_score
 			add = var:fe_opinion_of_target
 			add = var:fe_different_faith
 			add = var:fe_legalism_virtues

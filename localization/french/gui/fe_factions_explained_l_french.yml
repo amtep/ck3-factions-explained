@@ -68,3 +68,4 @@
  FE_STRUGGLE:1 "Le [struggle|E] fournit une opportunité"
  FE_TARGET_ELECTIVE:1 "[Character.MakeScope.Var('fe_faction').Faction.GetTarget.GetPrimaryTitle.GetName] est élective"
  FE_UMAYYAD_GAME_RULE:1 "Règle du jeu $rule_dissolution_umayyad$"
+ FE_LTAF_LOYALTY:1 "[loyalty|E]"
