@@ -26,6 +26,7 @@ template fe_faction_member_icon {
 }
 
 template fe_faction_member_breakdown {
+	datacontext = "[Character.MakeScope.Var('fe_faction').Faction]"
 	fe_tooltip_line = {
 		name = "fe_total_desire_positive"
 		visible = "[GreaterThan_CFixedPoint(Character.MakeScope.Var('fe_faction_total_desire').GetValue, '(CFixedPoint)0')]"
