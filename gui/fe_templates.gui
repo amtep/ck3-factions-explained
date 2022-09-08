@@ -393,6 +393,12 @@ template fe_faction_member_breakdown {
 		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue, '(CFixedPoint)0')]"
 		text = "[Localize('FE_UMAYYAD_GAME_RULE')]: [Character.MakeScope.Var('fe_umayyad_game_rule_score').GetValue|0=-]"
 	}
+
+	fe_tooltip_line = {
+		name = "fe_new_vassal_score"
+		visible = "[LessThan_CFixedPoint(Character.MakeScope.Var('fe_new_vassal_score').GetValue, '(CFixedPoint)0')]"
+		text = "[Localize('FE_NEW_VASSAL')]: [Character.MakeScope.Var('fe_new_vassal_score').GetValue|0=-]"
+	}
 }
 
 template fe_faction_member_tooltip {

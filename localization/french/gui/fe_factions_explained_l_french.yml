@@ -69,3 +69,4 @@
  FE_TARGET_ELECTIVE:1 "[Faction.GetTarget.GetPrimaryTitle.GetName] est élective"
  FE_UMAYYAD_GAME_RULE:1 "Règle du jeu $rule_dissolution_umayyad$"
  FE_LTAF_LOYALTY:1 "[loyalty|E]"
+ FE_NEW_VASSAL:0 "Newly vassalized"

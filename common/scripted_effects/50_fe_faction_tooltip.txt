@@ -57,6 +57,7 @@ fe_calculate_faction_desire = {
 	set_variable = { name = fe_target_elective_score value = 0 }
 	set_variable = { name = fe_umayyad_game_rule_score value = 0 }
 	set_variable = { name = fe_forced_to_join_score value = 0 }
+	set_variable = { name = fe_new_vassal_score value = 0 }
 
 	if = {
 		limit = {
@@ -76,6 +77,10 @@ fe_calculate_faction_desire = {
 		}
 
 		fe_independence_faction_modifiers = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		fe_calculate_new_vassal_score = {
 			TARGET = root.joined_faction.faction_target
 		}
 	}
@@ -251,6 +256,10 @@ fe_calculate_faction_desire = {
 		}
 
 		fe_calculate_umayyad_game_rule_score = {
+			TARGET = root.joined_faction.faction_target
+		}
+
+		fe_calculate_new_vassal_score = {
 			TARGET = root.joined_faction.faction_target
 		}
 	}
@@ -453,6 +462,7 @@ fe_calculate_faction_desire = {
 			add = var:fe_target_elective_score
 			add = var:fe_umayyad_game_rule_score
 			add = var:fe_forced_to_join_score
+			add = var:fe_new_vassal_score
 		}
 	}
 }
@@ -882,11 +892,28 @@ fe_independence_faction_modifiers = {
 					this = root
 				}
 			}
+			faith = {
+				faith_hostility_level = {
+					target = $TARGET$.faith
+					value <= faith_astray_level
+				}
+			}
 			$TARGET$.faith = root.faith
 		}
 		change_variable = {
 			name = fe_same_faith_elector_score
-			add = -150
+			add = {
+				value = -150
+				if = {
+					limit = {
+						exists = title:e_hre
+						$TARGET$ = {
+							has_primary_title = title:e_hre
+						}
+					}
+					add = -150
+				}
+			}
 		}
 	}
 
@@ -993,6 +1020,21 @@ fe_independence_faction_modifiers = {
 					add = -100
 				}
 			}
+		}
+	}
+}
+
+fe_calculate_new_vassal_score = {
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				modifier = became_vassal
+				target = $TARGET$
+			}
+		}
+		change_variable = {
+			name = fe_new_vassal_score
+			add = -1000
 		}
 	}
 }

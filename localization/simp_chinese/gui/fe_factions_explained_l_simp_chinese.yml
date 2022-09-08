@@ -69,3 +69,4 @@
  FE_TARGET_ELECTIVE:1 "[Faction.GetTarget.GetPrimaryTitle.GetName]是选举制的"
  FE_UMAYYAD_GAME_RULE:1 "$rule_dissolution_umayyad$游戏设置"
  FE_LTAF_LOYALTY:1 "[loyalty|E]"
+ FE_NEW_VASSAL:0 "Newly vassalized"
