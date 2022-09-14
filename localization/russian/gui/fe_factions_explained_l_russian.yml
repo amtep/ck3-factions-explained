@@ -1,4 +1,4 @@
-﻿l_english:
+﻿l_russian:
  FE_target:1 "[Faction.GetTarget.LocalPlayerString('You', Faction.GetTarget.GetTitledFirstName)]"
  FE_target_L:1 "[Faction.GetTarget.LocalPlayerString('you', Faction.GetTarget.GetTitledFirstName)]"
  FE_target_is:1 "$FE_target$ [Faction.GetTarget.LocalPlayerString('are', 'is')]"
