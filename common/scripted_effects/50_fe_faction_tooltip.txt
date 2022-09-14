@@ -308,8 +308,7 @@ fe_calculate_faction_desire = {
 			HOSTILE_BASE_VALUE = 50
 			EVIL_BASE_VALUE = 100
 			TARGET_FAITH = root.joined_faction.faction_target.faith
-		
-}
+		}
 		fe_calculate_debt = {
 			TARGET = root.joined_faction.faction_target
 			SCORE_PER_DEBT_LEVEL = 10
@@ -1992,7 +1991,7 @@ fe_calculate_clan_problems_score = {
 
 fe_calculate_struggle_score = {
 	if = {
-		#limit = { $TARGET$ = { any_character_struggle = { involvement = involved } } }
+		limit = { $TARGET$ = { any_character_struggle = { involvement = involved } } }
 		change_variable = {
 			name = fe_struggle_score
 			add = {
