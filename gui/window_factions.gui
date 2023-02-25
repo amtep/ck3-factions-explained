@@ -100,6 +100,7 @@ window = {
 						}
 					}
 
+					# Outer container for factions against player character
 					scrollbox = {
 						name = "against_you"
 						visible = "[GetVariableSystem.HasValue( 'factions_view_tabs', 'against_you' )]"
@@ -219,6 +220,7 @@ window = {
 						}
 					}
 
+					# Outer container for factions against players liege
 					scrollbox = {
 						name = "against_liege"
 						visible = "[GetVariableSystem.HasValue( 'factions_view_tabs', 'against_liege' )]"
