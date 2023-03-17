@@ -24,6 +24,7 @@
  FE_GAME_STABILITY:1 "领地稳定度设置"
  FE_SAME_FAITH_ELECTOR:1 "相同[faith|El]封建[elector|El]"
  FE_NOT_RIGHTFUL_LIEGE:1 "不是法理领主"
+# Should be updated to: more than half of territory is outside primary title
  FE_NOT_DE_JURE:1 "领地在$FE_target_possessive$主头衔外"
  FE_RANK_POSITIVE:1 "是个[Character.GetTitleAsNameNoTooltip]"
  FE_RANK_NEGATIVE:1 "不过是个[Character.GetTitleAsNameNoTooltip]"

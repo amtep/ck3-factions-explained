@@ -24,6 +24,7 @@
  FE_GAME_STABILITY:1 "Paramètre de stabilité du royaume"
  FE_SAME_FAITH_ELECTOR:1 "Même [faith|El] féodale [elector|El]"
  FE_NOT_RIGHTFUL_LIEGE:1 "N'est pas le seigneur lige légitime"
+# Should be updated to: more than half of territory is outside primary title
  FE_NOT_DE_JURE:1 "Le territoire est en dehors de $FE_target_possessive$ titre principal"
  FE_RANK_POSITIVE:1 "Est un [Character.GetTitleAsNameNoTooltip]"
  FE_RANK_NEGATIVE:1 "N'est que [Character.GetTitleAsNameNoTooltip]"

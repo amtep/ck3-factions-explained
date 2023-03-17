@@ -26,6 +26,7 @@
  FE_GAME_STABILITY:1 "Reichsstabilität"
  FE_SAME_FAITH_ELECTOR:1 "Selber [faith|El] Feudal [elector|El]"
  FE_NOT_RIGHTFUL_LIEGE:1 "Nicht rechtmäßiger Lehnsherr"
+# Should be updated to: more than half of territory is outside primary title
  FE_NOT_DE_JURE:1 "Territorium außerhalb $FE_target_possessive_neuter$ Haupttitel"
  FE_RANK_POSITIVE:1 "Ist ein [Character.GetTitleAsNameNoTooltip]"
  FE_RANK_NEGATIVE:1 "Ist nur ein [Character.GetTitleAsNameNoTooltip]"
