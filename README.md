@@ -1,10 +1,9 @@
 # ck3-factions-explained
-This Crusader Kings 3 mod does two things.
+This Crusader Kings 3 mod gives faction members an icon in their character view.
 
-1. Give faction members an icon in their character view.  
-2. Add a tooltip giving a breakdown of why they are in the faction.
-
-The tooltip is also shown in the faction window.
+It used to also display a breakdown of their reasons for being in the faction,
+but that is now part of the base game in the factions window, so it has been
+removed from this mod.
 
 # AVAILABILITY
 This mod is available in the Steam Community Workshop at https://steamcommunity.com/sharedfiles/filedetails/?id=2791137603
